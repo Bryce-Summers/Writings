@@ -1,0 +1,430 @@
+\documentclass[12pt, letterpaper]{book}
+
+\usepackage{color} %% Allows text to be typeset in color.
+
+%% These allow Me to add Images to the Book.
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%% Enables hyperlinks.
+\usepackage{hyperref}
+
+%% Makes BigO easier.
+\newcommand{\bigO}{\mathcal{O}}
+
+
+%%
+\oddsidemargin0cm
+\evensidemargin0cm
+\topmargin-2cm     % These lines increase the amount of usable space and save trees.
+\textwidth16.5cm
+\textheight23.5cm  
+
+%%\setcounter{tocdepth}{4} %% set the table of contents detail depth.
+
+%% Types of organizational sections.s
+%%\part{}
+%%\chapter{}
+%%\section{}
+%%\subsection{}
+%%\subsubsection{}
+%%\paragraph{}
+%%\subparagraph{}
+
+\begin{document}
+
+\title{\color{blue}Computer Science Book}
+\author{Written by Bryce Summers \texttt(BryceSummers.com)}
+\date{\color{red}Last Updated: \today}
+\maketitle
+
+
+\tableofcontents 
+
+%%\date{June 2015}
+
+\part{Fundamentals}
+
+\chapter{Mathematical Objects}
+
+To fully appreciate the material covered in this book, it is important that you are familiar with many mathematical objects, including sets, functions, orderings, numbers, relations, graphs, trees. At the present time, most purely mathematical material will not be explicity developed withing this book. The Author may write material regarding these subjects that will eventually be found at BryceSummers.com
+
+\chapter[Fundamental Distinctions]{Description, Interface, Implementation, and Analysis}
+
+\section{Chapter Overview}
+
+When thinking like a computer scientist, we often want to mimic the workings of reality, especially with regards to procedures or processes that modify the state of reality. Before we can effectivly mimic reality it is important to explicitly list several distinctions or perspectives on how a facet of reality may be perceived. In this Chapter, we will use the proccesss of a woman asking her husband to cook dinner as an example to help illustrate the distinctions that we will make. By understanding these distinctions now, you will be able to ease your mental workload for the rest of your computer science related life.
+
+\section{Descriptions}
+
+A description is a somewhat informal way of communicating. For example, a ceo at a large corporation use descriptions to describe their goals to their colleagues, where the colleagues would be responsible for acting on the intent and getting the desried results. Often Computer Scientists will interact with non computer scientists, such as the media, clients, users, and potential sponsers at the description level to convey the motivation behind their work. The description level could also be though of as the idea level.
+
+\section{Interfaces}
+
+An interface is a formal mathematical \textbf{specification} for how a given system should act. If the user of the system behaves in a certain way, the specification should provide a detailed description of what behavior the system should exhibit. Often interfaces are used to get multiple independantly produced systems to work together such as with the APIs that are becoming better known by the general public. Interfaces are also used to rigourously outline the workings of a describable idea in a form that can be understood at a later point in time. Many humans think of great ideas, but forget them because they did not write them down in sufficient detail that they could be recreated. Once an idea is written in such a form that it can be understood in the same way by multiple independant humans, it may be called a proper specification.
+
+Interfaces are the primary means by which information and details may be abstracted from the user of a system. (This is why the development of knowledge is of linear complexity and not worse!)
+
+	\subsection{Types}
+
+		In Computer Science, a type is a way of labeling groups of objects. For example, if I added two entities of type number, I would expect the result to also be a number, as apposed to a letter, chicken, or asparagus. We will be using types to describe specific objects and how objects of given types interact with each other. A Type can be thought of as a type of interface that describes what information and procedures the object may be used for.
+
+	\subsection{Abstract Data Types}
+
+		An Abstract data type (ADT) is an interface that describes the behavior of a given type. ADTs are commonly associated with mathimatical objects, such as functions, trees, graphs, sets, etc. Abstract Data Types are implemented by Data Structures, which we will discuss in the Implementation section. The main idea is that Abstract Data Types describe \textbf{What} a system should do and Data Structures specify \textbf{how} a machine acomplishes the behavior specified in th ADT.
+
+	\section{Implementations}
+
+	An implementation is a specification of the particular details of \textbf{how} a system will peform a given undertaking. An implementation is said to \textbf{implement} a given interface if it corectly provides detailed procedures the satisfy the expected behavior as described in the interface. 
+
+For example, say you were watching 1 mile foot race, every spectator knows that the athletes will be running 1 mile from the starting line to the ending line, that the athletes must start at the same time, and that the objective is for each athlete to be the first one across the finish line. These behaviors are the \textbf{interface} for a 1 mile foot race participant.
+
+The particular details and strategies employed by a runner in the race, such as their speed, foot positions, breathing rate, aggressiveness, energy management, conditioning, height, weight, hydration, etc are are the \textbf{implementation} of a participant.
+
+	\subsection{Data Structures}
+
+	A Data structure is a very important concept in the realm of programming, wherebye an abstract data type is implemented correctly by a given program that can be executed on an actual computational machine. In this book, we will discuss quite a few data structures. They are mostly used to abstract common data management tasks that are used as subroutines in complex programs and help reduce the cognitive load on programmers and Computer Scientists interested in the analysis of algorithms.
+
+	\section{Analysis}
+
+	Analysis is the proccess by which we verify that a given implementation correctly implements a given interface. For example, banks rely on analysis to ensure that their monetary systems are secure from unlawful activity such as malicious programs that steal money.
+
+	In addition to purely correctness focused analysis, is the analysis of the amount of resources used for a particular task. Important resources in the realm of computer programming include the time a computation takes, the amount of memory a computation requires, and the amount of energy consumed. Analysis of this form is very important, because many correct algorithms are not useful if they cannot be run in a reasonable amount of time with the memory capabilities of an actual machine.
+
+We will have a much more detailed discussion of different types of analysis in chapter \ref{analysis}.
+
+	\section{"Cooking" Example}
+
+To conclude this chapter, we will properly investigate how these distinctions can be used to view a non technical scenario.
+
+	\subsection{Scenario}
+
+	Please consider the common situation in which a woman asks her husband to cook dinner.
+
+	\subsection{Description}
+
+	The task is that of cooking dinner. The husband and wife each have likely eaten countless dinners in their life and both understand that making dinner is the proccess of producing food in an edible and pleasing form that may be consumed in the evening. The Wife merely needs to declare her intent in a conscise fashion using the word dinner for the husband to understand the intent. This is possible through the power of a shared definition.
+
+	\subsection{Interface}
+
+		In this example, the wife is said to be using her husband's interface. The husband's interface lists all of the actions that a husband is capable of performing such as that of preparing dinner. The details of how the husband decides on dinner, prepares it, cooks it, and the timings of his actions are abstracted from the wife so she does not need to worry about them. If the wife wanted more information, then we could extend the husband's interface to allow for him to answer questions and provide more details.
+
+	\subsection{Implementation}
+
+	The husband's implementation of the making dinner action would be the details and descsions that he makes, including a procedure for deciding whether a hamburger or a salad should be served, when to set the table, which beverages to serve, whether to serve dinner inside or outside, and all other relevant details pertaining to the action.
+
+	\subsection{Analysis}
+
+	To Analyze whether the husband makes an appropiate dinner in an appropiate manner would require us to look at the expectations of the wife and see if they are met by the husband's performance of the action, and in general by proving that the husband will always prepare the meal appropiatly given his internal descision procedures. In the real world, humans are not very likely to err at points in their lives, so it may be appropiate to only determine whether a paricular instance of the husband performing the action is correct or we could make statements about the probability of the husband succeeding at the action.
+
+
+\chapter{Memory, Data, and Interpretation} \label{memory}
+
+	\section{Overview}
+	\section{Static Memory Allocation} \label{static memory}
+	\section{Dynamic Memory Allocation} \label{dynamic memory}
+	\section[Memory Deallocation]{Garbage Collected vs. Manual Memory Deallocation}
+	\section{bits}
+	\section{bytes}
+	\section{chars}
+	\section{strings} \label{strings}
+		Strings are implemented by a sequence of characters followed by a terminal character. The reason is that strings vary from the trivial string of size 0 to strings containing the entire works of William Shakespeare. If the languages were to package size information for a strings, then they would need to add a field to the beginning of every string that is of sufficient bit size to store the number cooresponding to the largest possible string. This would increase the amount of size required for all strings in existance and would not be very useful as most operations, such as printing and concatenation on strings will iterate through all characters anyways. If the size of the string is desired by the programmer, then it can be found in linear time by iterating through all of the characters until the terminal character is found and counting how many characters are seen. Strings do have an overhead of one character, because they need to allocate space for and store the terminal character. Because strings are implemented in this fashion, they 
+	\section{pointers}
+	\section{bags}
+	\section{pairs}
+
+
+
+\chapter{General Definitions}
+
+\section{Imperative Programming}
+
+\textbf{Imperative programming} is a programming paradigm wherebye programmer directly command (hence "imperative") the computer to modify regions of data to perform a computation. They do this by writing lines of code that act as instructions for how the computer should proceed at any point in time, including which instructions to execute next, which sections of memory to modify, and how to group lines of code into modular tasks called functions. 
+
+\section{Purely Functional Programming}
+
+\textbf{Purely Functional Programming} is a programming paradigm whereby programmers specify Types and operations to map between types. The programmer does not give the computer instructions, but rather informs it as to how the decomposition between types work. A computation is thought of as the evaluation of a root function that may have many sub functions used in determining its output type.
+A hallmark of Purely Functional Programming is that their are no side effects, all input values to functions are unmodified, and all output values to functions are determined only as a function of the input values.
+
+\chapter{Data Structure Definitions}
+
+\section{Overview}
+
+When describing Data Structures, we will use terminology to help us to explicity defferentiate between the properties of various structures. You may wish to refer to Chapter \ref{ADTs} for descriptions of Abstract data types that may be used in this section to provide examples of the properties. You may also with to refer to Chapter \ref{arrays} for a discussion of arrays, Chapter \ref{lists} for a discussion of lists, and Section \ref{strings} for a discussion of strings.
+
+\section{Ephemeral vs. Persistant}
+These terms are also know as mutable vs. immutable or Dynamic vs. Frozen repectively. 
+
+Let $S$ and $S'$ be the states of a data structure before and after an operation respectivly.
+
+A data structure is said to be \textbf{ephemeral} if succeeding operations on $S$ are not guranteed to be correct. Ephemeralness is a hallmark of data structures that permit operations that mutate the internal state of a structure, such as an oepration that replaces a the value of a byte with another byte. Traditionally, ephemeral data structures are associated with imperative programming, but they may be programmed in functional languages that are not pure in the sense that they allow mutations or side effects.
+
+A data structure is said to be \textbf{Persistant} if both $S$ and $S'$ may be correctly used in future operations. Another way of saying this is that the data structure stores all of its previous states. Most well designed persistant data structures are capable of maintaining their history of states very memory and time efficiently and may be used in applications that require the same data to be used in different branches of execution.
+
+\section{Packaged vs. Unpackaged.}
+
+A data structure is said to be \textbf{Packaged} if it exists with some metadata or external interpretational knowledge that specifies information about the structure such as the locations in memory of all of its particular parts or how large the structure is. For instance, bytes can be viewed as packaged, because externally we know that all bytes are of size 8 bits and take up the contiguous region of memory starting at their address and extending for 8 bytes in order of increasing memory address. Arrays are also packaged, because they exist with a given element size and a total number of bytes. They only work because we have these pieces of information.
+
+A data structure is said to be \textbf{Unpackaged} if it exists without rigourous structural data. When viewing an unpackaged structure, it is impossible to determine all of the properties of the structure merely upon inspection. Most Programming languages implement strings as unpackaged structures, because they are defined as a sequence of char data fields followed by a terminal character instead of explicitly store the size of the string at the beginning. Please see the section \ref{strings} for more information regarding strings.
+
+\section{Indexed vs. Non-Indexed}
+
+A data structure of size $S$ is said to be \textbf{Indexed} if every natural number between 0 and $S-1$ cooresponds to a distinct element that is contained within the data structure and an efficient lookup operation exists returns the proper element given one of these natural numbers. In this case, we generally consider efficient lookup functions to be those that run in constant time. The canonical example of an indexed collection would be arrays. I suppose a $\bigO(log(S))$ function would be efficient for an Augmented tree structure with stored tree size fields.
+
+A data structure is said to be \textbf{Non-Indexed} if it is not said to be Indexed.
+
+\section{Finite vs. Infinite}
+
+A data structure is said to be of \textbf{Finite} size their is a finite bound to the number of elements stored in the structure.
+
+A data structure is said to be of \textbf{Infinite} size if the structure theoretically represents a collection of an infinite amount of elements. One example of an infinite data structure would be a stream that represents the natural numbers and gives the user a incrementally larger number every time. Although it never explicitly stores all of its elements in memory, it is able to represent all of its elements through its mathematical procedure. Another property of infinite structures is that they are often iterable, but not entirly enumeratable. Please see section \ref{streams} for more information on streams and \ref{game trees} for more information about essentially infinite game trees.
+
+\section{Fixed Size vs. Resizable}
+
+A data structure is said to be of \textbf{Fixed Size} if it requires a constant amount of memory throughout its lifespan. Arrays and most primitive data types are of fixed size as well as some specilized versions of many of the more complex data structures. Electrical and Comptuer Engineers often use fixed size data structures for applications that lack a dynamic memory allocator and have constrained memory resources.
+
+A data structure is said to be \textbf{Resizable} if it may enlarge of decrease its total memory requirements throughout its lifespan. Resizable structures require the presense of a dynamic memory allocator
+
+Please see sections \ref{static memory} and \ref{dynamic memory} for discussions of static and dynamic memory allocation.
+
+\section{Ordered vs. Unordered}
+
+A data structure with size $n$ is said to be \textbf{Total ordered} if there is a total order associated with the elements contained withing the structure and all of the elements are arranged in the structure in a way that respects this ordering. The presense of an ordering enables data structures to provide $\bigO(log(n))$ time complexity searchs through the use of binary search, whereas the fastest search time for an ordered collection is a linear search. Please see sections \ref{linear search} and \ref{binary search} for more information about basic collection searching.
+
+A data structure is said to be \textbf{Ordered} if there is a well defined transversal for the data structure. In other words all iterations through the structure are guranteed to yield the same partial enumerations. Every element is also guranteed to be found at well defined locations throughout the structure. Most data structures that are ordered such as arrays and lists will have the oldest added elements nearer to the start of the structure than the youngest added elements.
+
+A data structure is said to be \textbf{Unordered} if there there is no well defined transversal through the data structure and elements are not guranteed to be found at consistant locations. The primary example of such as structure would be a set, which cares only about inclusion rather than the relative locations of the elements.
+
+
+\section{Enumeratable and Iterable}
+
+These terms can mostly be used interchangably, but I have decided to define them in the context of this book in subtly different ways.
+
+A data structure $D$ is said to be \textbf{Enumeratable} if it can be converted into an indexable data structure such as an array. Naturally this translation would ideally be done in linear time. The output structure may be called the \textbf{enumeration} of $D$
+
+A data structure $D$ is said to be \textbf{Iterable} if it can provide an iterator that cooresponds to the current collection of elements inside of the structure. The order in which the elements are iterated through by the iterator coorespond to their positions in a \textbf{partial enumeration} of $D$.
+
+Both the enumeration and partial enumeration of $D$ will be ordered if and only if $D$ is an ordered data structure. The enumeration of infinite sized data structures is infinite, so it may not be explicity produced on an actual finite memory machine. This is why infinite data structures may be used practically with lazy evaluation or streaming based algorithms or those that are of a mathematical nature that require properties of the sturcture, but not the structure itself. 
+
+\section{Transversals}
+
+A \textbf{Transversal} of a data structure is the procedure for determining the order of its enumeration.
+
+The most common transversal for an indexed data structure such as an array is to iterater from the lowest indice to the highest indice. There are countless other possible transversals possible, such as the reverse transversal or a transversal that visits every even element first and then visits the odd elements. You will find that transversals will be implicitly mentioned many times throughout this book, so please keep your eyes peeled.
+
+Please see section \ref{tree transversals} for a discussion of more complicated tree transversals.
+
+\section{Eager vs. Lazy}
+
+A data structure is said to be \textbf{Eager} if all computations are explicitly carried out in full at the moment its operations are called.
+
+A data structure is said to be \textbf{Lazy} if it allows for the data structure to store operational requests and delay executing them until the user makes a request that requires an element to be revealed from the structure. For example, consider an implementation of a stream that represents all of the natural numbers. If the stream was implemented eagerly, then it would spend an infinite amount of time multiplying all of the natural numbers by 2, which would not be practical. If instead we implemented the stream lazily, then we could store the multiplication operation inside the stream and just multiply all numbers by 2 as they come out of the stream. Lazy evaluation is of paramount importance to computations on infinite data structures as well as aplications where the user does not need to query every element's state after an operation. Some functional programming languages use lazy evaluation to increase the efficiency of purely functional computations.
+
+\section{Simple vs. Performant vs. Efficient}
+
+An implementation of a data structure is said to be \textbf{Simple} if it can easily be read and understood by an programmer that did not write the code.
+
+An implementation of a data structure is said to be \textbf{Performant} if it runs to completion relatively quickly compared to the standards of its real world time period.
+
+An implementation of a data structure is said to be \textbf{Efficient} if its asymptotic complexity is competitive with the asymptotic complexity of the leading simple implementations of its time period.
+
+In this book we will focus on simple and efficient data structures, because the author hopes to convey broad concepts to the reader. We will try to eschew data structures that are too complicated, because they are not as fun to program and to not shed as much light on the beautiful general themes of computer science.
+
+\section{Amortized versus Non Amortized}
+
+A data structure is said to be \textbf{non Amortized} if its operations are guranteed to run efficiently every time they are called. These data structure are safe to use in real time applications such as visual systems and Aircrafts, where an operation that takes too much time might jepardize the proper performance of the system.
+
+A data structure $D$ is said to be \textbf{Amortized} if it runs efficiently relative to the number of operations that it has performed. In other words an amortized data structure has efficient time complexities for each its operations averaged over all of the times the operations have been called. Amortization is a powerful way of viewing data structures that allows us to use many efficient data structures that would not be possible without amortization.
+
+Please see section \ref{amortized analysis} for a discussion of amortized analysis.
+
+\section{Endogeneous vs. Exogeneous}
+
+A data structure is said to be \textbf{Endogeneous} if the values of the elements are stored withing the structure. For instance Arrays are endogenous because they directly contain the memory used to stor their elements. Endogeneous structures allow us to conserve space and ensure the locality of data by directly storing the element data within the structure.
+A data structure is said to be \textbf{Exogeneous} if pointers to the elements are stored within the structure, instead of the values of the elements themselves. This allows us to add the exact same memory addressed element to multiple structures and modifications to the element affect all of the exogeneous structures that the element has been added to.
+
+\section{Functional versus Imperative}
+
+\section[Null vs. Node terminals]{Null-terminated vs. Null-node Terminated.}
+
+\section{Sequential versus Parallel}
+
+	A \textbf{sequential} computation is one that is run on one processor.
+
+	A \textbf{Parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
+
+\section{Concurrency safe.}
+	\subsection{Motivation}
+	\subsection{Mutual Exclusion}
+	\subsection{Lock-Free}
+
+Please see the following project repository for an example project using Lock-Free Union Find structures \href{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs}{Project Repository:}
+\url{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs} 
+
+\chapter{Analysis} \label{analysis}
+
+	\section{Correctness Analysis}
+
+	\section{Resource Analysis}
+		\subsection{Models}
+		\subsection{Big O}
+	\section{bigO}
+	\section{Exact Analysis}
+
+	\section{Asymptotic Analysis}
+
+		\subsection{The Adversary.}
+		\subsection{Worst Case}
+		\subsection{Average Case}
+		\subsection{Best Case}
+		\subsection{Randomized}
+	
+	\section{Amortized Analysis} \label{amortized analysis}
+		\subsection{Motivation}
+		\subsection{Banker's Method}
+		\subsubsection{Turnstile vs. Cash Register Model}
+		\subsection{Potential Functions}
+		\subsection{Potential Method}
+
+	\section{Analysis of Parallel Algorithms} \label{parallel analysis}
+
+\part{Abstract Data Types and Data Structures}
+
+\chapter{ADTs} \label{ADTs}
+
+	\section{Overview}
+
+	In this Section we will discuss the mathematical definitions of various Abstract Data Types. For particular implementations of these Types, please see the part of this book discussing Data Structures.
+
+\section{Function}
+	\subsection{Interface}
+	\subsection{Finite Functions}
+
+	\subsection{Infinite Functions}
+\section{Stack}
+\section{Queue}
+\section{Deque}
+\section{Priority Queue}
+\section{Set}
+\section{Multi-Set}
+\section{Relation}
+\section{Trees}
+	\subsection{Binary Trees}
+	\subsection{Binary Search Trees}
+	\subsection{Balanced Binary Search Trees.}
+	\subsection{Heaps}
+	\subsection{Tree Transversals} \label{tree transversals}
+
+
+\part{Data Structures}
+
+\section[Overview]{Overview}
+
+Throughout this part of the book, we will be developing many of the standard data structures use in imperative computation. There is quite a lot of beauty in the interelations between each of these structures. You will find that many of these structures provide that same capabilities albeit with different resource complexities and that many of the earlier data structures may be seen as special cases of the later structures. Of particular note are graphs, which are ADTs cooresponding to mathematical relations, which are sufficiently general that they can represent most of the other data structures presented in this book.
+
+\chapter{Arrays} \label{arrays}
+
+\section{"Arrays" Example}
+
+	\subsection{Description}
+	\subsection{Interface}
+	\subsection{Implementation}
+	\subsection{Analysis}
+
+	\subsection{Strings}
+
+\chapter{Lists} \label{lists}
+
+	\subsection{Endogenous vs. exogenous}
+	\subsection{Single vs. Double}
+	\subsection{Linear vs. Circular}
+
+\chapter{Unbounded Arrays (UBA)}
+
+	\subsection{Overview}
+	\subsection{Amortized Analysis.}
+
+\chapter{Dynamic Memory Allocation}
+
+\chapter{Stacks}
+	\subsection{Interface}
+	\subsection{Array Implementations}
+		\subsubsection{Amortized Analysis}
+	\subsection{List Implementations}
+	\subsection{Persistant Stacks}
+	\subsection{Max/Min Stacks}
+	\subsection{Function Call Stack}
+
+\chapter{Queues}
+	\subsection{Interface}
+	\subsection{List Implementation}
+	\subsection{Array Implementation}
+	\subsection{Fairness}
+	\subsection{Pipelining}
+	\subsection{Queuing Theory}
+
+\chapter{Dequeues}
+\chapter{Heaps}
+\chapter{Union Find Structures}
+\chapter{Hash Tables}
+\chapter{Maps}
+\chapter{Bloom Filters}
+\chapter{Link-Cut trees}
+\chapter{Binary Search Trees}
+\chapter{D-ary Trees}
+\chapter{Graphs}
+\chapter{Cycle}
+\chapter{Streams} \label{streams}
+\chapter{Tries}
+\chapter{Suffix Tries}
+
+\part{Persistant Data Structures}
+
+\part{Fixed Size Data Structures.}
+
+\part{Inefficient Data Structures}
+
+\part{Obscure Data Structures.}
+
+\part{Search Algorithms}
+
+	\chapter{Collection Searches}
+		\section{Linear Search} \label{linear search}
+		\section{Binary Search} \label{binary search}
+
+	\chapter{Graph Searches}
+		\section{BFS}
+		\section{DFS}
+		\section{A* Search}
+		\section{Weighted A* Search}
+		\section{A* recomputations}
+
+	\chapter{Game Tree Searches} \label{game trees}
+		\section{MiniMax} \label{minimax}
+		\section{AlphaBeta Pruning}
+		\section{Iterative Deepening}
+
+\begin{thebibliography}{9}
+
+\bibitem{Tarjan}
+  Robert Tarjan,
+  \emph{Data Structures and Network Algorithms},
+  SIAM, Philadelphia, PA,
+  1983.
+
+\bibitem{Okasaki}
+  Chris Okasaki,
+  \emph{Purely Functional Data Structures},
+  FIXME: publisher, location
+  YEAR.
+
+\bibitem{CMU}
+	The author received an Undergraduate Education in computer science at Carnegie Mellon University in Pittsbugh, PA.
+
+\end{thebibliography}
+
+
+
+
+
+\end{document}
