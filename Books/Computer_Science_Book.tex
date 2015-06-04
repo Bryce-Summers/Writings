@@ -95,7 +95,7 @@ We will have a much more detailed discussion of different types of analysis in c
 
 	\section{"Cooking" Example}
 
-To conclude this chapter, we will properly investigate how these distinctions can be used to view a non technical scenario.
+To conclude this chapter, we will properly investigate how these distinctions can be used to view a non technical scenario. For a thorough technical investigation of Arrays using these distinctions, please see Section \ref{arrays}.
 
 	\subsection{Scenario}
 
@@ -121,17 +121,92 @@ To conclude this chapter, we will properly investigate how these distinctions ca
 \chapter{Memory, Data, and Interpretation} \label{memory}
 
 	\section{Overview}
-	\section{Static Memory Allocation} \label{static memory}
-	\section{Dynamic Memory Allocation} \label{dynamic memory}
-	\section[Memory Deallocation]{Garbage Collected vs. Manual Memory Deallocation}
+
+In this section we will be developing the basics of how information is represented and interpreted on a machine. These ideas are of paramount importance to the Computer Scientists' world view.
+
 	\section{bits}
-	\section{bytes}
-	\section{chars}
-	\section{strings} \label{strings}
-		Strings are implemented by a sequence of characters followed by a terminal character. The reason is that strings vary from the trivial string of size 0 to strings containing the entire works of William Shakespeare. If the languages were to package size information for a strings, then they would need to add a field to the beginning of every string that is of sufficient bit size to store the number cooresponding to the largest possible string. This would increase the amount of size required for all strings in existance and would not be very useful as most operations, such as printing and concatenation on strings will iterate through all characters anyways. If the size of the string is desired by the programmer, then it can be found in linear time by iterating through all of the characters until the terminal character is found and counting how many characters are seen. Strings do have an overhead of one character, because they need to allocate space for and store the terminal character. Because strings are implemented in this fashion, they 
-	\section{pointers}
-	\section{bags}
-	\section{pairs}
+
+	How does one differentiate between two things? In the real world, we are constantly differentiating between ideas, objects, people, etc every minute of our lives. A computer is essentially a machine that is able to differentiate and act upon a huge, but finite number of states. The basic building block of state information is the \textbf{bit}, which is defined to take on two distinct states, which we will call $$1 \texttt{ and } 0$$
+ Depending on the context the states of a bit can be called alternative names such as $true$ and $false$, but what is important is that the states are \textit{different}. Bits become more and more powerful as they work \textit{together} as you will see in the following sections.
+
+	\section{memory}
+
+	Actual Computers are capable of representing quite a few more than 2 states and they acomplish this representational feat by combining bits into larger structures. If 1 bit can represent 2 states, then if two of them are combined, then together they can represent $2 \cdot 2 = 4$ states. More explicitly, 2 bits can represent the following states: $$00, 01, 10, \texttt{and }11$$ It is important to note the these bits must be interpretted as acting together, because with an alternative interprettation the bits could be seen as independant unrelated entities. We will discover that in order to effectivly represent, modify, and interpret the states of a machine, it is very important to both think of combinations of bits and to think of a separation between different groups of bits.
+	\textbf{Memory} is an array of bits stored on a computer that represents the entirety of the current state of the computer. One can think of it as a very long line of boxes, each of which contains a bit in one of its two states, as in Figure \ref{figure:memory} the boxes are called \textbf{memory locations}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & $\cdots$\\ \hline
+\end{tabular}
+\caption{Memory Array}
+\label{figure:memory}
+\end{table}
+
+\section{byte}
+	A \textbf{Byte} is a group of 8 bits, which is capable of representing $2^{8}$ different states. If we interpret each state as a binary number composed of bits representing binary digits, then bytes range from the state 0 to $2^{8} - 1 = 255$. Please see Figure \ref{figure:byte100} for an representation of the number 100. Other primitive number sizes such as integers, shorts, and longs are represented by combinations of multiple bytes. Primitive number are the basic finitie sized numbers that are used as fundamental states in the execution of programs. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llllllll}
+$2^{7}$ & $2^{6}$ & $2^{5}$ & $2^{4}$    & $2^{3}$   & $2^{2}$  & $2^{1}$ & $2^{0}$ \\ \hline
+\multicolumn{1}{|l|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} \\ \hline
+\end{tabular}
+\caption{A Byte Representing the number 100. ($2^{6} + 2^{5} + 2^{2}$)}
+\label{figure:byte100}
+\end{table}
+
+\section{2's Complement}
+Negative numbers are represented by mapping half of the possible states of a primitive number of size $N$ to negative numbers between -1 and $2^{N-2}$ inclusive. The particulars of this mapping are up to the implementation, but a popular mapping is what is known as 2's complement arithemetic, where the numbers are represented such that when any two numbers are interpreted as positive numbers, added together, and then remapped to appropiate positive or negative numbers, then the result is correct modulo $2^{N}$. One way to convert from a positive number to its negation is by flipping, i.e. changing the state, of every bit and then incrementing the number by 1 using base 2 arithemetic. Please see Figure \ref{figure:2scomplement} for an example of the conversion of 100 to -100. Of particular note, please see that $100 + (-100)$ overflows to 0!
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|}
+\cline{2-9}
+100 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 \\ \cline{2-9} 
+$\sim 100$ & 1 & 0 & 0 & 1 & 1 & 0 & 1& 1 \\ \cline{2-9} 
+-100 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 \\ \cline{2-9} 
+\end{tabular}
+\caption{Bit representations of 100, bit flipped 100, and -100 (=$\sim 100 + 1$).}
+\label{figure:2scomplement}
+\end{table}
+
+	\section{Booleans}
+
+	Booleans are a primitive type supported by many programming languages that can take on 2 states, \textit{true} and \textit{false}. They are like bits, except for memory alignment reosons are usually implemented as byte sized or greater sections of memory that are restricted to only take on 2 states. It may be more memory and time efficient to use the boolean operations on larger types such as integers when trying to represent arrays of booleans in software, such as when using bit sets. Booleans are used to represent the results of any question or function that returns yes or no answers.
+
+	\section{Pointers}
+
+	Every memory location has an address that the computer can use to locate the memory location, much like mailmen use our home addresses to located our houses. A pointer is a primitive type that represents an adress. On a 32 bit machine, pointers take up 32 bits and can therefore address up to $2^{32}$ distinct memory locations, whereas 64 bit machines have pointers that are 64 bits wide. Pointers are used to form connections between disparate groups of data. One can say that a region of memory representing a pointer $p$ \textbf{points to} the region of memory that is addressed by the value of $p$.
+
+FIXME : Put in a simple diagram with an 4 bit computer.
+
+	\section{Structures}
+
+	Structures are types formed by placing several different types in a predetermined sequence. For instance I might make a structure containing 3 chars to represent a person's three main initials or a structure containing a pointer to a structure that represents a university and an integer representing the current school year. Structures will be very important to packaging data types into useful forms and allow for the creation of metaphors that ease the cognitive load on the programmer. Structures are called objects in the paradigm of object oriented programming.
+
+	\section{Pairs}
+
+Pairs are simple structures that associate two typed objects. They are often used to represent simple utility objects, to represent connections, or to represent simple not quite primitive objects.
+
+	\section{Static Memory Allocation} \label{static memory}
+
+Also known as the Stack.
+
+	\section{Dynamic Memory Allocation} \label{dynamic memory}
+
+Also known as the Heap.
+	\section[Memory Deallocation]{Memory Deallocation}
+
+Garbage Collected vs. Manual Memory Deallocation
+
+	\section{Chars}
+
+	Also known as characters, chars are regions of memory the size of a byte that can represent states for various letters and other symbols used in the representation of text. As long as the computer interprets the charters state in the same way each time when it encodes, decodes, and displays the characters to the user on a visual display, it does not matter which bit states coorespond to which character. This has lead to many different encodings for sets of characters including the Ascii encoding and the Unicode encoding. Programmers type using english characters, instead of sequences of 1s and zeros, but the machine views their programs as sequences of characters.
+
+	\section{Strings} \label{strings}
+		Strings are implemented by a sequence of characters followed by a terminal character. The reason is that strings vary from the trivial string of size 0 to strings containing the entire works of William Shakespeare. If the languages were to package size information for a strings, then they would need to add a field to the beginning of every string that is of sufficient bit size to store the number cooresponding to the largest possible string. This would increase the amount of size required for all strings in existance and would not be very useful as most operations, such as printing and concatenation on strings will iterate through all characters anyways. If the size of the string is desired by the programmer, then it can be found in linear time by iterating through all of the characters until the terminal character is found and counting how many characters are seen. Strings do have an overhead of one character, because they need to allocate space for and store the terminal character. Because strings are implemented in this fashion, they require the presense of a dynamic memory allocator.
 
 
 
@@ -177,7 +252,9 @@ A data structure is said to be \textbf{Non-Indexed} if it is not said to be Inde
 
 A data structure is said to be of \textbf{Finite} size their is a finite bound to the number of elements stored in the structure.
 
-A data structure is said to be of \textbf{Infinite} size if the structure theoretically represents a collection of an infinite amount of elements. One example of an infinite data structure would be a stream that represents the natural numbers and gives the user a incrementally larger number every time. Although it never explicitly stores all of its elements in memory, it is able to represent all of its elements through its mathematical procedure. Another property of infinite structures is that they are often iterable, but not entirly enumeratable. Please see section \ref{streams} for more information on streams and \ref{game trees} for more information about essentially infinite game trees.
+A data structure is said to be of \textbf{Infinite} size if the structure theoretically represents a collection of an infinite amount of elements. One example of an infinite data structure would be a stream that represents the natural numbers and gives the user a incrementally larger number every time. Although it never explicitly stores all of its elements in memory, it is able to represent all of its elements through its mathematical procedure. Another property of infinite structures is that they are often iterable, but not entirly enumeratable. Infinite data structures are usually associated with explicit transformation functions and mathematical definitions.
+
+Please see section \ref{streams} for more information on streams and \ref{game trees} for more information about essentially infinite game trees.
 
 \section{Fixed Size vs. Resizable}
 
@@ -243,22 +320,26 @@ Please see section \ref{amortized analysis} for a discussion of amortized analys
 A data structure is said to be \textbf{Endogeneous} if the values of the elements are stored withing the structure. For instance Arrays are endogenous because they directly contain the memory used to stor their elements. Endogeneous structures allow us to conserve space and ensure the locality of data by directly storing the element data within the structure.
 A data structure is said to be \textbf{Exogeneous} if pointers to the elements are stored within the structure, instead of the values of the elements themselves. This allows us to add the exact same memory addressed element to multiple structures and modifications to the element affect all of the exogeneous structures that the element has been added to.
 
-\section{Functional versus Imperative}
-
 \section[Null vs. Node terminals]{Null-terminated vs. Null-node Terminated.}
+
+In many node based data structures, most notably binary search trees, the structure can either terminate through the use of null pointers, or structure nodes simply containing null data. Depending on the implementation choice, the implementation may be able to perform fewer null pointer checks and simplify the implementation of operations such as rearrangement or tree balancing.
 
 \section{Sequential versus Parallel}
 
 	A \textbf{sequential} computation is one that is run on one processor.
 
-	A \textbf{Parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
+	A \textbf{parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
 
 \section{Concurrency safe.}
+	FIXME : Expand this section or move it somewhere else.
 	\subsection{Motivation}
+	Sometimes we would like separate processors to modify the same state of a structure at the same time. These proccessors are said to be running concurrently. FIXME : Make sure to define concurrency and mention concurrent uniproccessors.
 	\subsection{Mutual Exclusion}
+Mutual exclusion is a technique for ensuring the safety of concurrent modification to data by only affording one processor permission to make reads and writes at any given time. Some standardized techniques for implementing mutual exclusion are semaphors, mutexes, and locks. FIXME : Expand this a bit.
 	\subsection{Lock-Free}
+	If it is desirable for multiple processors to access a structure without waiting for permission, then lock free data structures may be implemented that ensure the correctness of the operations no matter which order the proccessors perform their concurrent modifications. These data structures are generally difficult to implement and require the use of atomic system provided operations such as compare and swaps.
 
-Please see the following project repository for an example project using Lock-Free Union Find structures \href{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs}{Project Repository:}
+	Please see the following project repository for an example project using Lock-Free Union Find structures \href{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs}{Project Repository:}
 \url{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs} 
 
 \chapter{Analysis} \label{analysis}
@@ -299,54 +380,67 @@ Please see the following project repository for an example project using Lock-Fr
 \section{Function}
 	\subsection{Interface}
 	\subsection{Finite Functions}
-
 	\subsection{Infinite Functions}
+	\subsection{Real World Examples.}
 \section{Stack}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Queue}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Deque}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Priority Queue}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Set}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Multi-Set}
-\section{Relation}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
+\section{Relations}
+	\subsection{Interface}
+	\subsection{Real World Examples.}
 \section{Trees}
+	\subsection{Interface}
+	\subsection{Full Trees}
+	\subsection{Complete Trees}
 	\subsection{Binary Trees}
 	\subsection{Binary Search Trees}
 	\subsection{Balanced Binary Search Trees.}
 	\subsection{Heaps}
-	\subsection{Tree Transversals} \label{tree transversals}
+	\subsection{Tree Transversals} \label{Tree Transversals}
 
-
-\part{Data Structures}
+\chapter{Data Structures}
 
 \section[Overview]{Overview}
 
 Throughout this part of the book, we will be developing many of the standard data structures use in imperative computation. There is quite a lot of beauty in the interelations between each of these structures. You will find that many of these structures provide that same capabilities albeit with different resource complexities and that many of the earlier data structures may be seen as special cases of the later structures. Of particular note are graphs, which are ADTs cooresponding to mathematical relations, which are sufficiently general that they can represent most of the other data structures presented in this book.
 
-\chapter{Arrays} \label{arrays}
+\section{Arrays} \label{arrays}
 
-\section{"Arrays" Example}
-
-	\subsection{Description}
-	\subsection{Interface}
-	\subsection{Implementation}
-	\subsection{Analysis}
+\subsection{Fixed Size Arrays}
+	\subsubsection{Description}
+	\subsubsection{Interface}
+	\subsubsection{Implementation}
+	\subsubsection{Analysis}
 
 	\subsection{Strings}
 
-\chapter{Lists} \label{lists}
+\section{Lists} \label{lists}
 
 	\subsection{Endogenous vs. exogenous}
 	\subsection{Single vs. Double}
 	\subsection{Linear vs. Circular}
 
-\chapter{Unbounded Arrays (UBA)}
+\section{Unbounded Arrays (UBA)}
 
 	\subsection{Overview}
 	\subsection{Amortized Analysis.}
 
-\chapter{Dynamic Memory Allocation}
-
-\chapter{Stacks}
+\section{Stacks}
 	\subsection{Interface}
 	\subsection{Array Implementations}
 		\subsubsection{Amortized Analysis}
@@ -355,30 +449,32 @@ Throughout this part of the book, we will be developing many of the standard dat
 	\subsection{Max/Min Stacks}
 	\subsection{Function Call Stack}
 
-\chapter{Queues}
+\section{Queues}
 	\subsection{Interface}
 	\subsection{List Implementation}
 	\subsection{Array Implementation}
 	\subsection{Fairness}
 	\subsection{Pipelining}
 	\subsection{Queuing Theory}
+	\subsection{Two Stacks}
 
-\chapter{Dequeues}
-\chapter{Heaps}
-\chapter{Union Find Structures}
-\chapter{Hash Tables}
-\chapter{Maps}
-\chapter{Bloom Filters}
-\chapter{Link-Cut trees}
-\chapter{Binary Search Trees}
-\chapter{D-ary Trees}
-\chapter{Graphs}
-\chapter{Cycle}
-\chapter{Streams} \label{streams}
-\chapter{Tries}
-\chapter{Suffix Tries}
+\section{Dequeues}
+\section{Heaps}
+\section{Union Find Structures}
+\section{Hash Tables}
+\section{Maps}
+\section{Bloom Filters}
+\section{Link-Cut trees}
+\section{Binary Search Trees}
+\section{D-ary Trees}
+\section{Graphs}
+\section{Cycle}
+\section{Streams} \label{streams}
+\section{Tries}
+\section{Suffix Tries}
+\section{Binary Descision Diagrams}
+\section{Bit Sets}
 
-\part{Persistant Data Structures}
 
 \part{Fixed Size Data Structures.}
 
@@ -386,23 +482,25 @@ Throughout this part of the book, we will be developing many of the standard dat
 
 \part{Obscure Data Structures.}
 
-\part{Search Algorithms}
+\part{Algorithms}
 
-	\chapter{Collection Searches}
-		\section{Linear Search} \label{linear search}
-		\section{Binary Search} \label{binary search}
+	\chapter{Search Algorithms}
 
-	\chapter{Graph Searches}
-		\section{BFS}
-		\section{DFS}
-		\section{A* Search}
-		\section{Weighted A* Search}
-		\section{A* recomputations}
+	\section{Collection Searches}
+		\subsection{Linear Search} \label{linear search}
+		\subsection{Binary Search} \label{binary search}
 
-	\chapter{Game Tree Searches} \label{game trees}
-		\section{MiniMax} \label{minimax}
-		\section{AlphaBeta Pruning}
-		\section{Iterative Deepening}
+	\section{Graph Searches}
+		\subsection{BFS}
+		\subsection{DFS}
+		\subsection{A* Search}
+		\subsection{Weighted A* Search}
+		\subsection{A* recomputations}
+
+	\section{Game Tree Searches} \label{game trees}
+		\subsection{MiniMax} \label{minimax}
+		\subsection{AlphaBeta Pruning}
+		\subsection{Iterative Deepening}
 
 \begin{thebibliography}{9}
 
@@ -419,12 +517,11 @@ Throughout this part of the book, we will be developing many of the standard dat
   YEAR.
 
 \bibitem{CMU}
-	The author received an Undergraduate Education in computer science at Carnegie Mellon University in Pittsbugh, PA.
+	The author received an Undergraduate Education in Computer Science at Carnegie Mellon University in Pittsbugh, PA.
 
 \end{thebibliography}
 
 
 
-
-
+%% Signals that the document has ended.
 \end{document}
