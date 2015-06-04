@@ -11,7 +11,8 @@
 
 %% Makes BigO easier.
 \newcommand{\bigO}{\mathcal{O}}
-
+\newcommand{\bigOmega}{\Omega}
+\newcommand{\bigTheta}{\Theta}
 
 %%
 \oddsidemargin0cm
@@ -122,14 +123,14 @@ To conclude this chapter, we will properly investigate how these distinctions ca
 
 	\section{Overview}
 
-In this section we will be developing the basics of how information is represented and interpreted on a machine. These ideas are of paramount importance to the Computer Scientists' world view.
+In this section we will be developing the basics of how information is represented and interpreted on a machine. These ideas are of paramount importance to the Computer Scientists' and programmers concptual model or the abstract practical state of a computer.
 
-	\section{bits}
+	\section{Bits}
 
 	How does one differentiate between two things? In the real world, we are constantly differentiating between ideas, objects, people, etc every minute of our lives. A computer is essentially a machine that is able to differentiate and act upon a huge, but finite number of states. The basic building block of state information is the \textbf{bit}, which is defined to take on two distinct states, which we will call $$1 \texttt{ and } 0$$
- Depending on the context the states of a bit can be called alternative names such as $true$ and $false$, but what is important is that the states are \textit{different}. Bits become more and more powerful as they work \textit{together} as you will see in the following sections.
+ Depending on the context the states of a bit can be called alternative names such as \textit{true} and \textit{false}, or \textit{on} and \textit{off}, but what is important is that the states are \textit{different}. Bits become more and more powerful as they work \textit{together} as you will see in the following sections.
 
-	\section{memory}
+	\section{Memory}
 
 	Actual Computers are capable of representing quite a few more than 2 states and they acomplish this representational feat by combining bits into larger structures. If 1 bit can represent 2 states, then if two of them are combined, then together they can represent $2 \cdot 2 = 4$ states. More explicitly, 2 bits can represent the following states: $$00, 01, 10, \texttt{and }11$$ It is important to note the these bits must be interpretted as acting together, because with an alternative interprettation the bits could be seen as independant unrelated entities. We will discover that in order to effectivly represent, modify, and interpret the states of a machine, it is very important to both think of combinations of bits and to think of a separation between different groups of bits.
 	\textbf{Memory} is an array of bits stored on a computer that represents the entirety of the current state of the computer. One can think of it as a very long line of boxes, each of which contains a bit in one of its two states, as in Figure \ref{figure:memory} the boxes are called \textbf{memory locations}.
@@ -144,7 +145,7 @@ In this section we will be developing the basics of how information is represent
 \label{figure:memory}
 \end{table}
 
-\section{byte}
+\section{Byte}
 	A \textbf{Byte} is a group of 8 bits, which is capable of representing $2^{8}$ different states. If we interpret each state as a binary number composed of bits representing binary digits, then bytes range from the state 0 to $2^{8} - 1 = 255$. Please see Figure \ref{figure:byte100} for an representation of the number 100. Other primitive number sizes such as integers, shorts, and longs are represented by combinations of multiple bytes. Primitive number are the basic finitie sized numbers that are used as fundamental states in the execution of programs. 
 
 \begin{table}[h]
@@ -162,7 +163,7 @@ Negative numbers are represented by mapping half of the possible states of a pri
 
 \begin{table}[h]
 \centering
-\begin{tabular}{l|l|l|l|l|l|l|l|l|}
+\begin{tabular}{r|l|l|l|l|l|l|l|l|}
 \cline{2-9}
 100 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0 \\ \cline{2-9} 
 $\sim 100$ & 1 & 0 & 0 & 1 & 1 & 0 & 1& 1 \\ \cline{2-9} 
@@ -220,6 +221,24 @@ Garbage Collected vs. Manual Memory Deallocation
 
 \textbf{Purely Functional Programming} is a programming paradigm whereby programmers specify Types and operations to map between types. The programmer does not give the computer instructions, but rather informs it as to how the decomposition between types work. A computation is thought of as the evaluation of a root function that may have many sub functions used in determining its output type.
 A hallmark of Purely Functional Programming is that their are no side effects, all input values to functions are unmodified, and all output values to functions are determined only as a function of the input values.
+
+\section{Declarative Programming}
+
+\section{Object Oriented Programming}
+
+\section{Algorithm}
+
+\section{Computation and Procedures}
+
+\section{Deterministic vs. Randomized}
+
+\section{Sequential versus Parallel}
+
+	A \textbf{sequential} computation is one that is run on one processor.
+
+	A \textbf{parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
+
+\section{Recursion}
 
 \chapter{Data Structure Definitions}
 
@@ -309,7 +328,7 @@ In this book we will focus on simple and efficient data structures, because the 
 
 \section{Amortized versus Non Amortized}
 
-A data structure is said to be \textbf{non Amortized} if its operations are guranteed to run efficiently every time they are called. These data structure are safe to use in real time applications such as visual systems and Aircrafts, where an operation that takes too much time might jepardize the proper performance of the system.
+A data structure is said to be \textbf{non Amortized} if every one of its operations are guranteed to run efficiently every time they are called. These data structure are safe to use in real time applications such as visual systems and Aircrafts, where an operation that takes too much time might jepardize the proper performance of the system.
 
 A data structure $D$ is said to be \textbf{Amortized} if it runs efficiently relative to the number of operations that it has performed. In other words an amortized data structure has efficient time complexities for each its operations averaged over all of the times the operations have been called. Amortization is a powerful way of viewing data structures that allows us to use many efficient data structures that would not be possible without amortization.
 
@@ -324,11 +343,13 @@ A data structure is said to be \textbf{Exogeneous} if pointers to the elements a
 
 In many node based data structures, most notably binary search trees, the structure can either terminate through the use of null pointers, or structure nodes simply containing null data. Depending on the implementation choice, the implementation may be able to perform fewer null pointer checks and simplify the implementation of operations such as rearrangement or tree balancing.
 
-\section{Sequential versus Parallel}
+\section{Deterministic vs. Randomized}
 
-	A \textbf{sequential} computation is one that is run on one processor.
+A data structure is said to be \textbf{Deterministic} if given the same sequence of operations and inputs, the data structure will behave the same way every time. Deterministic data structures have strict gurantees on their time analysis bounds, which is useful for applications that cannot afford any expensive operations. On the other hands, because the analysis gurantees are strict, the time complexity of deterministic operations may be higher due to degenerate sequences of operations that an adversary can use to make the data structure run inefficiently.
 
-	A \textbf{parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
+A data structure is said to be \textbf{Randomized} if it contains a random component that causes it to not behave in exactly the same way each time. The time bounds for randomized data structures are often based on the average or expected performance for the operations, which means that sometimes the data structure may by chance perform slowly. On the other hand randomization can be a powerful tool for improving the ideal performance of a data structure and combatting an adversary.
+
+Please see Section \ref{asymptotic analysis} for a discussion of asymptotic analysis that has been mentioned in this section.
 
 \section{Concurrency safe.}
 	FIXME : Expand this section or move it somewhere else.
@@ -344,30 +365,305 @@ Mutual exclusion is a technique for ensuring the safety of concurrent modificati
 
 \chapter{Analysis} \label{analysis}
 
+	\section{Overview}
+
+		In this chapter, we will discuss how we can use analysis to reason about the efficieny and corectness of our procedures. Analysis is not explicitly used when we write code, but it is used when a Computer Scientist wants to decide which procedures are more fit for particular purposes than others and it is also used to increase our confidence in the correctness and safety of a given procedure. We will mostly analyze the performance of independant modular functions and conclude that an entire program is correct if every component function is correct. So it suffices to discuss the analysis of programmatic functions.
+
 	\section{Correctness Analysis}
 
-	\section{Resource Analysis}
-		\subsection{Models}
-		\subsection{Big O}
-	\section{bigO}
-	\section{Exact Analysis}
+		\subsection{Mathematical Proof}
 
-	\section{Asymptotic Analysis}
+To prove that a function is theoretically correct, it is necessary to rigoursously formalize what the desired behavior is in the language of mathematics and then prove that any inputs to the function imply the correct output and side effects. 
+	For instance if I had a function $$\texttt{ADD : int*int $\rightarrow$ int}$$ that takes two numbers and returns their sum with no side effects, then to prove its correctness we would look at the implementation and reason that the return result must be the sum of the numbers for all possible inputs to the function. In the specification we would also need to specify whether integer arithmetic should overflow or throw an error when the sum exceeds the size cooresponding to the representational capabilities of the machine's primitive integer type.
+	It is also possible to prove that every line in the program is safe and correct as implied by the previous lines in the program. Programmers naturally develop this reasoning gradually and subconsiously as they gain more and more experience writing programs. Skilled programmers use this sort of reosoning informally on a day to day basis when writing correct code.
+
+		\subsection{Empirical Testing}
+
+	Empirical testing is the process by which a programmer runs their function with different inputs and then checks to see if the return results are correct. As moe and more inputs produce valid outputs, their is a higher and higher probability that the program is correct. Often Empirical testing is a good way to gain confidence one's program, but for a greater sense of surety it is important to use reaosoning such as in the mathematical proof section. It is perfectly possible to write a hard coded program that returns the correct results for a finite set of test cases, but is does not contain any mathematical logic. Programs like these are good for lookup tables, but will fail for applications that demand prescise answers for all inputs.
+
+			\subsubsection{Unit Testing}
+
+	One way of automating the empirical testing of an application is through unit testing, where we write auxiliary functions that test inputs and return true iff the input is validated. Often, we can even just inform the user of incorrect functions and terminated the execution of the program immediatly to allow the user to correct the erroneous function. Unit Test as very useful when making changes to well tested libraries, because the correctness of a library can be automatically checked after the modification has been made without a human manually going through an retesting the library. Whenever a programmer finds a set of inputs that produces erroneous results but is not caught by the existing tests, they can add a new unit test to the testing suite that checks for the new execution case.
+	An example of unit test that checks for the correctness of an add function is the following:
+\begin{verbatim}
+// Returns true iff the ADD function correctly adds integers.
+boolean test_add(int a, int b, int*int -> int ADD)
+{
+   return (a + b) == ADD(a, b); 
+}
+\end{verbatim}
+
+When unit testing it is often very helpful to write an assertion helper function:
+\begin{verbatim}
+void ASSERT(boolean b)
+{
+   if(b == false) throw new Error("Assertion Failed");
+}
+\end{verbatim}
+
+Then, we could test the correctness of the \texttt{ADD} function using the \texttt{ASSERT} function without writing a specific function like the \texttt{test\_add} function as follows:
+\begin{verbatim}
+// a = some integer, b = some integer.
+ASSERT(a + b == ADD(a,b));
+\end{verbatim}
+
+	\subsection{Formal Methods}
+	When the utmost correctness of a system is required, such as in Nuclear powerplants and Aircraft, formal methods may be used to rigrously test and prove the correctness of the system.
+
+		Please see section \ref{bdds} for a discussion of Binary Descision Diagrams that are data structures sometimes used in formal correctness checking.
+
+	\section{Resource Analysis}
+
+	Analysis in this section deals with the amount of certain resources such as \textit{memory, time}, and \textit{energy} that are used during a computation. Analysis of this sort is very important for the following reasons.
+\begin{itemize}
+  \item  If a computation takes too much \textit{time}, then it is not useful.
+  \item  If a computation takes up too much \textit{memory}, then a machine cannot correctly perform the computation.
+  \item  If a computation takes up too much \textit{energy}, then the running of the machine will be too expensive, the world will have less energy for others, and the machine may create real world dangers due to excessive heat.
+\end{itemize}
+	Please note that the memory requirements of a computation are sometimes refered to as the \textit{space} requirements. It is also of note that the implementations of many proedures make many time and space tradeoffs.
+
+		\subsection{Models}
+
+In order to correctly talk about resources in a consistant fashion admidst the variations and complexity of real world machines, we need to create abstract conceptual models that we will use to reoson about the performance of reality. 
+\subsubsection{Time}
+	From an analysis point of view we will think of time in terms of the number of operations that need to be performed. We will generally treat simple operations such as arithmetic between two integers, or loading and storing from a memory address as unitary operations.
+\subsubsection{Memory}
+	We will think of memory in terms of the number of fixed sized chunks of memory used, for instance the size of an integer or a word on a machine. It does not matter which size chunk we use as long as we are consistant.
+\subsubsection{Energy}
+	We will not discuss energy consumption very much in this book, but elsewhere it is necessary to develop a model for which operations a machine uses energy. Often minimizing data movement and improving the locality of memory accesses can improve the energy consumption of a computation.
+
+		\section{Exact Analysis}
+
+An analysis is said to be \textit{exact} if it derives an explicit formula for the amount of system resources an algorithm will use. For instance if we were to do an exact analysis of an addition function, then we would see that it requires space for 3 integers, including the two input integers and the 1 output integer. We would also see that it takes 1 operation to perform the computation, although with a more detailed knowledge of the machine it would also probably require an overhead of several operations to push the function and the inputs onto the stack and pop them off when the function returns.
+
+Exact analysis is very important in parrallel applications that wish to achieve a constant time speedup and those wishing to make their programs as fast as possible.
+
+\newpage
+
+	\section{bigO} \label{bigO}
+	\subsection{Overview}
+	It is rather rare for different computations to take up the exact same number of resources. We often find that several algorithms that utilize the same resources behave relativly similar and it it is difficult to perceive a difference. Sometimes when we run algorithms on larger and larger problem sizes the differences become more apparent. BigO notation is a useful mathematical tool that can be used to group algorithms based on how similar their performance is as their problem sizes become very large. BigO notation groups all procedures into \textbf{complexity classes} that effectively elliminate constants and illuminate those procedures that should have comparable performance. 
+
+\subsubsection{Warning}
+It is important to distinguish BigO notation from the exact resources that procedures use, because it is possible for two procedures to have the same complexity class and to have one of them perform 1 million times or worse slower than the other.
+\subsection{Formal Definitions}
+
+The Formal definition of a function $f$ that grows no faster than $g$ (big O):
+$$f(n) \in \bigO(g(n)) \leftrightarrow \exists(k > 0).\exists(n_{0}). \forall(n > n_{0}).f(n) \le k \cdot g(n)$$
+The Formal definition of a function $f$ that grows no slower than $g$ (big Omega):
+$$f(n) \in \bigOmega(g(n)) \leftrightarrow \exists(k > 0).\exists(n_{0}). \forall(n > n_{0}).f(n) \ge k \cdot g(n)$$
+The Formal definition of a function $f$ being in the compexity class defined by function $g$ (big Theta):
+$$f(n) \in \bigTheta(g(n)) \leftrightarrow f(n) \in \bigO(g(n)) \wedge f(n) \in \bigOmega(g(n))$$
+
+BigO notation is used to define upperbounds on the resources used by a function, whereas BigOmega is used to define lower bounds and BigTheta is used to define exact complexity classes for functions.
+
+Please see Figure \ref{Figure:TimeComplexities} for a table illustrating the relative performances of different complexiety classes for different sized problems.
+
+After looking at the table, it should become apparent to you that all of the complexety classes from $2^{n}$ and beyond are extremely slow and complexity classes beyond $n \cdot lg(n)$ are relatively slow. We will be using BigO notation alot in our discussion of Asymptotic Analysis in section \ref{asymptotic analysis}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrlllll}
+\multicolumn{1}{r}{} & {\bf Problem Size} & 2 & 4 & 8 & 16 & 32 \\
+\multicolumn{1}{c}{{\bf Name}} & \multicolumn{1}{c}{{\bf Complexity}} &  &  &  &  &  \\ \cline{3-7} 
+Constant Time & \multicolumn{1}{r|}{$\mathcal{O}(1)$} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} \\ \cline{3-7} 
+Logarithmic & \multicolumn{1}{r|}{$\mathcal{O}(log_{b}(n))$} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} \\ \cline{3-7} 
+Linear & \multicolumn{1}{r|}{$\mathcal{O}(n)$} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{16} & \multicolumn{1}{l|}{32} \\ \cline{3-7} 
+ & \multicolumn{1}{r|}{$\mathcal{O}(n \cdot log_{b}(n))$} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{24} & \multicolumn{1}{l|}{64} & \multicolumn{1}{l|}{160} \\ \cline{3-7} 
+Quadratic & \multicolumn{1}{r|}{$\mathcal{O}(n^{2})$} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{16} & \multicolumn{1}{l|}{64} & \multicolumn{1}{l|}{256} & \multicolumn{1}{l|}{1024} \\ \cline{3-7} 
+Cubic & \multicolumn{1}{r|}{$\mathcal{O}(n^{3})$} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{64} & \multicolumn{1}{l|}{512} & \multicolumn{1}{l|}{4096} & \multicolumn{1}{l|}{32768} \\ \cline{3-7} 
+Exponential & \multicolumn{1}{r|}{$\mathcal{O}(2^{n})$} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{16} & \multicolumn{1}{l|}{256} & \multicolumn{1}{l|}{65536} & \multicolumn{1}{l|}{4294967296} \\ \cline{3-7} 
+Factorial & \multicolumn{1}{r|}{$\mathcal{O}(n!)$} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{24} & \multicolumn{1}{l|}{40320} & \multicolumn{1}{l|}{$\sim 2.09 \times 10^{13}$} & \multicolumn{1}{l|}{$\sim 2.63 \times 10^{35}$} \\ \cline{3-7} 
+Non-Computable & \multicolumn{1}{r|}{$\mathcal{O}(BusyBeaver(n))$} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{107} & \multicolumn{1}{l|}{HUGE} & \multicolumn{1}{l|}{HUGE} & \multicolumn{1}{l|}{HUGE} \\ \cline{3-7} 
+\end{tabular}
+\caption{Time Approximations relative to constant time operations in order of increaseing complexity and problem size. $b$ is 2 for the approximations, but logarithms of all bases are in the same somplexity class.}
+\label{Figure:TimeComplexities}
+\end{table}
+
+
+	\section{Asymptotic Analysis} \label{asymptotic analysis}
+
+		\subsection{Overview}
+			As seen in section \ref{bigO}, we can use big $\bigO$ notation to make easily differentiate between the complexities of different algorithms. We will now put bigO notation to use to analyze the performance of algorithms form several general viewpoints that may help us make descisions on which algorithms and procedures are worth implementing. This is one of the most important features of a Computer Science viewpoint in that it is of paramount importance that we can make well informed descisions upon how information should be processed.
+
+It is important to note that Asymptotic analysis can be applied to all resources include both time and memory.
 
 		\subsection{The Adversary.}
+
+Usually in our analysis of procedures, we will imagine a theoretical user called the \textit{aversary} who always knows how to feed our program with input data that makes our procedure perform in the worst possible way relative to the performance goal we are trying to optimize.
+
+For a real life example consider a bus system. Someone has the job of deciding on how many busses to send along each routes, but a sports stadium may act as an adversary by providing huge numbers of bus riders at specific stops that serve as outliers to the general usage of the bus system. If the designer wanted a general solution without special casing the sporting events, much life many of the vanilla algorithms we will discuss, then he would need to send huge numbers of busses to the sporting stadium at all times, even when there is no event, in order that the system is guranteed to never crash. Of course, once he knows more about the problem and can communicate with the sporting stadium, he can develop a more efficient algorithm by only routing extra busses to the stadium when games begin and end. In the same way, we can often develop much more efficient algorithms when we have more informationa and are alright making our algorithm less generally applicable.
+
 		\subsection{Worst Case}
+
+	A worst case analysis of an algorithm seeks to find out what is the maximum amount of a given resource the algorithm will use over all possible executions.
+
+	Consider the problem of finding a shirt in a set of drawers, assuming the shirt is indeed in the set of drawers. In the worst case you will have to look through every single drawer, therefore the worst case analysis of this algorithm would label it as of linear time complexity in terms of the number of drawers.
+
 		\subsection{Average Case}
+
+An average case analysis of an algorithm describes the average amount of a given resource that is used over all possible executions.
+
+	Going back to our shirt and drawers example, and further assuming that all shirts are distinct and the same number of shirts are in each drawer, the average amount of drawers to find a shirt averaged over all possible initial shirt searches would be the number of drawers divided by 2, because half of the shirts are in each half of the drawers and the timings perfectly average out to searching half of the drawers. One can also think of the middle drawer as the point where it is equally likely that a shirt has been or not been found.
+
 		\subsection{Best Case}
-		\subsection{Randomized}
+
+A Best case analysis describes the smallest possible number of resources an algorithm will use out of all possible executions.
+
+	In our drawer example, the best case would be 1 drawer if we found the shirt we were looking for in the very first drawer.
+
+		\subsection{Expected Case}
+
+The expected case is quite like the average case, but is mostly used with regards to randomized algorithms that are likely to use varying resources even when called with the same inputs. Expected case analysis determines how much of a given resource an algorithm is expected to use for any particular inputs. Usually the complexity is the greatest expected value out of any set of inputs, in other words what is the highest probable value that an adversary can force your algorithm to perform at.
 	
 	\section{Amortized Analysis} \label{amortized analysis}
 		\subsection{Motivation}
-		\subsection{Banker's Method}
-		\subsubsection{Turnstile vs. Cash Register Model}
-		\subsection{Potential Functions}
-		\subsection{Potential Method}
 
-	\section{Analysis of Parallel Algorithms} \label{parallel analysis}
+Often when doing worst case analysis, it is hard to prevent all cases from being attacked by an adversary. Often their will be some operations that when in a particular state will be quite slow compared to the rest of the work. This peculiarity may convince some algorithm designers to give up on certain algorithms and never implement them.
+
+Thankfully, many of these algorithms when viewed in light of \textbf{Amortized Analysis} may be understood to actually be quite efficient. We will use Amortized analysis to show that a sequence of operations uses an efficient amount of resources relative to the amount of operations that have been performed. In this sense we are averaging the performance of sequences of operations rather than viewing each operation independantly.
+
+Often amortization schemes only apply to sequences of operations that start from a trivial state, if we were to start the analysis at a complicated state, then we would likely need to add a start up cost to the time complexity of the Analysis.
+
+		\subsection{Banker's Method}
+
+	In the banker's method, we add theoretical coins to a theoretical bank every time we perform an operation. Whenever we perform an expensive operation that takes up more time than our desired time complexity, we pay for the extra cost with the coins we have saved in the bank. If we can prove that for any sequence of operations, we can always pay for expensive operations and then we can say that the algorithm runs in the amortized time complexity of the non expensive operations.
+
+\subsubsection{Example}
+
+	Consider the problem of incrementing a natural number represented by bits by 1. We would like to prove that we can do this in amortized constant time in terms of the nuber of bits flipped. Please see Figure \ref{figure:mantissa incrementation} for an ilustration of the first 4 operations in this procedure.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r|c|c|c|}
+\cline{2-4}
+Initial State & 0 & 0 & 0 \\ \cline{2-4} 
+1 bit flipped & 0 & 0 & 1 \\ \cline{2-4} 
+2 bits flipped & 0 & 1 & 0 \\ \cline{2-4} 
+1 bit flipped & 0 & 1 & 1 \\ \cline{2-4} 
+3 bits flipped & 1 & 0 & 0 \\ \cline{2-4} 
+\end{tabular}
+\caption{First 4 operations in \textbf{Natural Number Incrementation Procedure} along with the costs in number of flipped bits.}
+\label{figure:mantissa incrementation}
+\end{table}
+
+For our analysis we will allocate 2 coins per operation, therebye seeking to derive a constant time complexity bound. The procedure procedes from the initial state as follows:
+
+\begin{itemize}
+  \item 1 Bit is flipped, 1 out of the 2 coins allocated for this operation is used to pay for the flipped bit. The 1 remaining coins are stored. There is now 1 coin in the bank.
+  \item 2 bits are flipped. 2 coins from the allocated 2 coins are paid, 0 coins are stored. There is still 1 coin in the bank.
+  \item 1 bit is flipped. 1 coin pays for the operation, 1 coin is stored in the band. There are now 2 coins in the bank.
+  \item 3 bits are flipped. The two allocated coins are paid in addition to 1 coin from the bank. The bank now has 1 coin.
+  \item $\cdots$
+\end{itemize}
+
+By examining this pattern, one can see that we will always have enough coins in the bank to pay the costs of all operations when done in sequence. The key idea is that every time a bit is flipped from 0 to one, it stores one coin into the bank in order to pay for its eventual flipping back to 0. In this way, we can be certain that our bank account will never be overdrawn.
+
+\subsubsection{Turnstile vs. Cash Register Model}
+
+In many problems such as those viewed in amortized analysis, there are sequences of operations that increase some property, such as a counter as seen in the natural number incrementation procedure. a natural extension of these procedures is the ability to reverse the process and decrease the property while maintaining efficient time bounds.
+
+A good way of thinking of this is the difference between \textit{turnstiles} that only allow people in one direction and \textit{cash registers} that allow money to be both increased and decreased.
+
+What would happen if we naively implemented decrementation as the reverse of incrementation and allowed arbitrary sequences of incrementations and decrementations. Well, then we could have a situation where a number represented by an arbitraryly large number of 1s is incremented, then decremented repeatedly. Lets call the size in bits of this number $n$. Each of these operations would require $N + 1$ flips, which would eventually deplete and then overdraw any finite bank acount stored using any remotely frugal constant coin allocation policy. Alas, our algorithm now runs in linear time in the number of bits without the possibility of amotization as in the incrementation only example.
+
+One fabulous way to write an amortized constant time algorithm for the incrementation plus decrementation problem is to use \textit{trits}, which are objects that can take on 3 states: 1, 0, and -1. At this time, I will leave it as an \textbf{excerscise} to the reader to design an efficient algorithm using trits.
+
+\subsection{Potential Functions}
+
+A \textit{potential function} $\Phi$ is any function that maps the states of a system, such as an algorithm or data structure, to non-negative numbers. Potential functions also map the initial state of a data structure to 0.
+
+$$\Phi(S) \ge 0, \Phi(S_{\texttt{initial}}) = 0$$
+
+Potential functions are useful in many types of analysis including mathematical proofs and amortized analysis.
+
+\newpage
+
+\subsection{Potential Method}
+
+The \textit{Potential Method} is the name of the technique where potential functions are used to prove amortized bounds on the total cost of a sequence of operations.
+
+Let $C$ be a cost, $o$ be an operation, and $K$ be a non-negative constant of proportionality. We can define the amortized cost in resources as follows:
+
+\begin{equation} \label{eq:amortized cost}
+C_{\texttt{amortized}}(o) = C_{\texttt{actual}}(o) + K \cdot (\Phi(S_{\texttt{after}} - \Phi(S_{\texttt{before}})) 
+\end{equation}
+
+A proof of an upper bound on the amortized cost of a sequence of operations is also a valid proof for an upperbound on the total actual cost of the sequence of operations. Let $O = o_{0},  o_{1}, o_{2}, \cdots$ and also define the following:
+
+\begin{equation} \label{eq:total amortized cost}
+C_{\texttt{amortized}}(O) = \sum_{i}{C_{\texttt{amortized}}(o_{i})}
+\end{equation}
+
+\begin{equation} \label{eq:total actual cost}
+C_{\texttt{actual}}(O) = \sum_{i}{C_{\texttt{actual}}(o_{i})}
+\end{equation}
+
+We can then substitute in equation \ref{eq:amortized cost} to equation \ref{eq:total amortized cost}:
+
+$$C_{\texttt{amortized}}(O) = \sum_{i}{\left(C_{\texttt{actual}}(o_{i}) +  K \cdot (\Phi(S_{i+1}) - \Phi(S_{i})) \right)}$$
+
+We can then Substitute the expression as follows:
+$$C_{\texttt{amortized}}(O) = C_{\texttt{actual}}(O) + \sum_{i}{\left(K \cdot (\Phi(S_{i+1}) - \Phi(S_{i})) \right)}$$
+
+The second term is a telescoping seriese so all except the initial and final terms cancel out:
+
+$$C_{\texttt{amortized}}(O) = C_{\texttt{actual}}(O) + K \cdot \left( \Phi(S_{\texttt{Final}}) - \Phi(S_{\texttt{Initial}}) \right)$$
+
+Because we defined $\Phi(S_{\texttt{Initial}})$ to be 0 and $\Phi(S_{i}) \ge 0$ for all i, we can conclude that:
+$$\Phi(S_{\texttt{Final}}) - \Phi(S_{\texttt{Initial}}) \ge 0$$
+
+Therefore the amortized cost serves as an upper bound on the total cost.
+$$C_{\texttt{amortized}}(O) \ge C_{\texttt{actual}}(O)$$
+
+Also the amortized cost bound for a single operation is an upperbound for the average actual cost of single operations.
+
+\subsubsection{Key Idea}
+
+\begin{enumerate}
+  \item Determine a useful \textit{potential function} $\Phi$.
+  \item Prove $C_{\texttt{amortized}}(o)$ is in $\bigO(g(n))$ using equation \ref{eq:amortized cost}, which suffices to prove an upper bound on the average cost of any operation.
+  \item Prove $\Phi(S_{\texttt{Final}}) - \Phi(S_{\texttt{Initial}}) \ge 0$, which is trivial if you started from the trivial initialization state.
+\end{enumerate}
+
+\section{Analysis of Parallel Algorithms} \label{parallel analysis}
+
+\subsection{work and span}
+
+\begin{itemize}
+  \item The \textbf{work} of an algorithm is the amount of resources it must use in total.
+  \item The \textbf{span} of an algorithm is the largest amount of resources used by any particular processor.
+\end{itemize}
+
+\subsection{Efficiency vs. Speedup}
+
+\begin{itemize}
+  \item The speedup of a parrallel algorithm is $\frac{\texttt{execution time (using 1 processor)}}{\texttt{execution time (using $P$ processors)}}$
+  \item The Efficiency of a parrallel algorithm is the the speedup divided by the total amount of work the algorithm does.
+\end{itemize}
+
+When designing parrallel algorithms, we want to minimize span as much as possible, while trying to keep the work invariant. If we have to increase the amount of work to decrease the span, then our algorithm becomes less efficient and will burn more energy than required doing theoretically unneeded work.
+
+\section{Analysis of Dynamic Programming}
+
+\begin{enumerate}
+  \item Count the number of problem instances, $P$
+  \item Determine a bound on the resources used to solve one problem instance, $R$.
+  \item Bound the total resources of the problem by the resources it takes to solve all of the problem instances, $P \cdot R$
+\end{enumerate}
+
+\section{Analysis of Recursive Procedures}
+
+The simplest way to prove bounds regarding recursive procedures is to sum up the work done at every recursive instance, although this may be be hard to do at times and lead to nasty summations.
+
+\subsection{Brick Method}
+
+If the total amount of work done at each recursive depth decreases by at least a constant factor, then a bound for the work done for the initial function call will also bound the total amount of work done.
+
+If the total amount of work done at each recursive depth increases by at least a constant factior, then a bound for the amount of work done at the very last recursive step will also bound the total amount of work done.
+
+FIXME: Add diagrams and extra expanded informations.
+
 
 \part{Abstract Data Types and Data Structures}
 
@@ -472,17 +768,23 @@ Throughout this part of the book, we will be developing many of the standard dat
 \section{Streams} \label{streams}
 \section{Tries}
 \section{Suffix Tries}
-\section{Binary Descision Diagrams}
+\section{Binary Descision Diagrams} \label{bdds}
 \section{Bit Sets}
-
 
 \part{Fixed Size Data Structures.}
 
-\part{Inefficient Data Structures}
-
-\part{Obscure Data Structures.}
-
 \part{Algorithms}
+
+	\chapter{Sorting Algorithms}
+
+		\section{Selection Sort}
+		\section{Insertion Sort}
+		\section{Merge Sort}
+		\section{Quick Sort}
+		\section{Radix Sort}
+		\section{Bucket Sort}
+		\section{Binary Search Tree Sort}
+		\section{Heap Sort}
 
 	\chapter{Search Algorithms}
 
@@ -501,6 +803,20 @@ Throughout this part of the book, we will be developing many of the standard dat
 		\subsection{MiniMax} \label{minimax}
 		\subsection{AlphaBeta Pruning}
 		\subsection{Iterative Deepening}
+
+	\chapter{Parallel Algorithms}
+
+	\section{Inclusive Scan}
+
+This is a wonderful algorithm that can be used to magically build many other parallel algorithms.
+
+	\section{Addition}.
+
+\part{Inefficient and Obscure Algorithms and Data Structures}
+
+.
+
+
 
 \begin{thebibliography}{9}
 
