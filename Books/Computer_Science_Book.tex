@@ -76,11 +76,9 @@ Interfaces are the primary means by which information and details may be abstrac
 
 	\section{Implementations}
 
-	An implementation is a specification of the particular details of \textbf{how} a system will peform a given undertaking. An implementation is said to \textbf{implement} a given interface if it corectly provides detailed procedures the satisfy the expected behavior as described in the interface. 
+	An implementation is a specification of the particular details of \textbf{how} a system will peform a given undertaking. An implementation is said to \textbf{implement} a given interface if it corectly provides detailed procedures that satisfy the expected behavior as described in the interface. 
 
-For example, say you were watching 1 mile foot race, every spectator knows that the athletes will be running 1 mile from the starting line to the ending line, that the athletes must start at the same time, and that the objective is for each athlete to be the first one across the finish line. These behaviors are the \textbf{interface} for a 1 mile foot race participant.
-
-The particular details and strategies employed by a runner in the race, such as their speed, foot positions, breathing rate, aggressiveness, energy management, conditioning, height, weight, hydration, etc are are the \textbf{implementation} of a participant.
+For example, imagine a lamp. The \textbf{interface} for the lamp is that it can be turned on and off, where it produces light in the on state and does not produce light in the off state. The \textbf{implementation} on the other hand is all of the details abstracted from the user, such as the chemical reactions used to produce light, the routing of electricity, the methods of heat dissipation, the efforts to properly manage the bightness of the light, the materials chosen in the light's construction, etc. All of these details are not readily apparent, nor neccessary for the average user. These implementation details consist of all of the design descisions that went into how the implementation ultimatly performs as specified by an interface.
 
 	\subsection{Data Structures}
 
@@ -116,7 +114,7 @@ To conclude this chapter, we will properly investigate how these distinctions ca
 
 	\subsection{Analysis}
 
-	To Analyze whether the husband makes an appropiate dinner in an appropiate manner would require us to look at the expectations of the wife and see if they are met by the husband's performance of the action, and in general by proving that the husband will always prepare the meal appropiatly given his internal descision procedures. In the real world, humans are not very likely to err at points in their lives, so it may be appropiate to only determine whether a paricular instance of the husband performing the action is correct or we could make statements about the probability of the husband succeeding at the action.
+	To Analyze whether the husband makes an appropiate dinner in an appropiate manner would require us to look at the expectations of the wife and see if they are met by the husband's performance of the action, and in general by proving that the husband will always prepare the meal appropiatly given his internal descision procedures. In the real world, humans are not very likely to err at points in their lives, so it may be appropriate to only determine whether a paricular instance of the husband performing the action is correct or we could make statements about the probability of the husband succeeding at the action.
 
 
 \chapter{Memory, Data, and Interpretation} \label{memory}
@@ -350,6 +348,12 @@ A data structure is said to be \textbf{Deterministic} if given the same sequence
 A data structure is said to be \textbf{Randomized} if it contains a random component that causes it to not behave in exactly the same way each time. The time bounds for randomized data structures are often based on the average or expected performance for the operations, which means that sometimes the data structure may by chance perform slowly. On the other hand randomization can be a powerful tool for improving the ideal performance of a data structure and combatting an adversary.
 
 Please see Section \ref{asymptotic analysis} for a discussion of asymptotic analysis that has been mentioned in this section.
+
+\section{Sparse vs. Dense}
+
+A data structure is said to be \textbf{Dense} if it allocates memory for all elements up to the data structure size. These structures are time efficient, but require a lot of memory. These data structures waste a lot of space when most of their data is non existant, uniform, or just a bunch of null pointers.
+
+A data structure is said to be \textbf{Sparse} if is allocates only enough memory for the actual useful data currently stored at a given time in addition to the overhead of storing structures to locate these data pieces. Sparse data structures are good in situations where indexes are not contiguous or in situations where the majority of the data fields are null.
 
 \section{Concurrency safe.}
 	FIXME : Expand this section or move it somewhere else.
