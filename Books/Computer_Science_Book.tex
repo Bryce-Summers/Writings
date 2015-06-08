@@ -657,13 +657,47 @@ When designing parrallel algorithms, we want to minimize span as much as possibl
 The simplest way to prove bounds regarding recursive procedures is to sum up the work done at every recursive instance, although this may be be hard to do at times and lead to nasty summations.
 
 \subsection{Brick Method}
-
 If the total amount of work done at each recursive depth decreases by at least a constant factor, then a bound for the work done for the initial function call will also bound the total amount of work done.
 
 If the total amount of work done at each recursive depth increases by at least a constant factior, then a bound for the amount of work done at the very last recursive step will also bound the total amount of work done.
 
 FIXME: Add diagrams and extra expanded informations.
 
+\section{Arithmetic Intensity}
+
+The arithmetic intensity of a procedure is the ratio of useful operations vs. The total number of operations performed including overhead.
+
+Consider the problem of setting every element $X$ of an array to $2X + 1$ and the following code:
+
+\begin{verbatim}
+int[] A; // Array of integers.
+for(int i = 0; i < N; i++)
+{
+  A[i] = A[i]*2;
+}
+
+for(int i = 0; i < N; i++)
+{
+  A[i] = A[i] + 1;
+}
+\end{verbatim}
+
+This code spends $2*N$ operations to increment the loop counter, 2 operations to initialize the loop variable, $2*N$ operations checking the $i < N$, $2*N$ memory lookups, $2*N$ useful multiplication and addition operations, and $2*N$ memory stores.
+Disregarding the memory loads and stores, this code does $2*N$ useful operations, but $4*N + 2$ overhead operations to manage the looping. Therefore, the \textbf{Arithmetic Intensity} would be $\frac{1}{3}$
+
+This means that only around one third of our execution time is being used to do work that we consider to be useful.
+
+We can improve this by rewriting the code as follows.
+\begin{verbatim}
+int[] A; // Array of Integers.
+for(int i = 0; i < N; i++)
+{
+	int val = A[i];
+	A[i] = val*2 + 1;
+}
+\end{verbatim}
+
+The arithmetic intensity is now around $\frac{1}{2}$. If we desire a greater arithmetic intensity, we would need to find more useful work that can be done within the body of the loop iteration.
 
 \part{Abstract Data Types and Data Structures}
 
