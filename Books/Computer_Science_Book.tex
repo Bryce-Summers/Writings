@@ -9,6 +9,9 @@
 %% Enables hyperlinks.
 \usepackage{hyperref}
 
+%% Enables the use of math fonts such as black board style.
+\usepackage{amssymb}
+
 %% Makes BigO easier.
 \newcommand{\bigO}{\mathcal{O}}
 \newcommand{\bigOmega}{\Omega}
@@ -234,7 +237,7 @@ A hallmark of Purely Functional Programming is that their are no side effects, a
 
 	A \textbf{sequential} computation is one that is run on one processor.
 
-	A \textbf{parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms.
+	A \textbf{parallel} computation is one whose work is distributed to more than one processor. Paralllel computations can only be performed if the work of the computation can be decomposed into independant pieces or pieces that may be processed concurrently. Please see section \ref{parallel analysis} for a discussion of the analysis of parallel algorithms. Please see \ref{parallel algorithms} for a discussion of parallel algorithm design and examples.
 
 \section{Recursion}
 
@@ -440,7 +443,7 @@ In order to correctly talk about resources in a consistant fashion admidst the v
 
 An analysis is said to be \textit{exact} if it derives an explicit formula for the amount of system resources an algorithm will use. For instance if we were to do an exact analysis of an addition function, then we would see that it requires space for 3 integers, including the two input integers and the 1 output integer. We would also see that it takes 1 operation to perform the computation, although with a more detailed knowledge of the machine it would also probably require an overhead of several operations to push the function and the inputs onto the stack and pop them off when the function returns.
 
-Exact analysis is very important in parrallel applications that wish to achieve a constant time speedup and those wishing to make their programs as fast as possible.
+Exact analysis is very important in parallel applications that wish to achieve a constant time speedup and those wishing to make their programs as fast as possible.
 
 \newpage
 
@@ -642,11 +645,11 @@ Also the amortized cost bound for a single operation is an upperbound for the av
 \subsection{Efficiency vs. Speedup}
 
 \begin{itemize}
-  \item The speedup of a parrallel algorithm is $\frac{\texttt{execution time (using 1 processor)}}{\texttt{execution time (using $P$ processors)}}$
-  \item The Efficiency of a parrallel algorithm is the the speedup divided by the total amount of work the algorithm does.
+  \item The speedup of a parallel algorithm is $\frac{\texttt{execution time (using 1 processor)}}{\texttt{execution time (using $P$ processors)}}$
+  \item The Efficiency of a parallel algorithm is the the speedup divided by the total amount of work the algorithm does.
 \end{itemize}
 
-When designing parrallel algorithms, we want to minimize span as much as possible, while trying to keep the work invariant. If we have to increase the amount of work to decrease the span, then our algorithm becomes less efficient and will burn more energy than required doing theoretically unneeded work.
+When designing parallel algorithms, we want to minimize span as much as possible, while trying to keep the work invariant. If we have to increase the amount of work to decrease the span, then our algorithm becomes less efficient and will burn more energy than required doing theoretically unneeded work.
 
 \section{Analysis of Dynamic Programming}
 
@@ -842,18 +845,265 @@ Throughout this part of the book, we will be developing many of the standard dat
 		\subsection{AlphaBeta Pruning}
 		\subsection{Iterative Deepening}
 
-	\chapter{Parallel Algorithms}
+	\chapter{Common Algorithms for Linear Collections of Numbers}
 
-	\section{Inclusive Scan}
+		This section will discuss algorithms for many of the standard statistics that are often computed from linear collections of data.
 
-This is a wonderful algorithm that can be used to magically build many other parallel algorithms.
+		\subsection{Partitioning} \label{Partitioning Algorithms}
 
-	\section{Addition}.
+		\subsubsection{Non destructive Partitioning. $\bigO(n)$ work, $\bigO(n)$ memory, $\bigO(log(n))$ span.}
+
+\begin{verbatim}
+// Partition into elements less, equal, and greater than the given value.
+void partition(int[] collection, int[] lesser, int[] equal, int[] greater, int value)
+{
+  for(int i = 0; i < len; i++)
+  {
+    int c_val = collection[i];
+    if (c_val <  value) then (lesser .add(c_val));
+    if (c_val == value) then (equal  .add(c_val));
+    if (c_val >  value) then (greater.add(c_val));
+  }
+}
+\end{verbatim}
+
+		\subsubsection{Destructive Partitioning.  $\bigO(n)$ work, $\bigO(1)$ memory}
+
+\newpage
+
+		\subsection{Linear Reduce Operations. $\bigO(n)$ work, $\bigO(log(n))$ span.} \label{Minimum algorithms}
+
+\subsubsection{Location Based Element Search}
+
+The following algorithm can be used to find the index of a particular element in a collection when a binary function is used to determine the relative fitness of candidates.
+
+\begin{verbatim}
+
+// Returns index leftmost index i in indices, such that collection[i] is a minimal.
+int reduce(int[] collection, int ... indices, op : (int[], int, int) --> int))
+{
+  int best_index = indices[0];
+
+  for(int  i = 0; i < indices.size; i++)
+  {
+    best_index = op(collection, best_index, indices[i]);
+  }
+  return best_index;
+}
+
+
+// Returns index i, such that collection[i] is the leftmost minnimum element.
+int reduce(int[] collection, op : op : (int[], int, int) --> int))
+{
+  reduce(collection, [0, ..., collection.size - 1], op);
+}
+\end{verbatim}
+
+\subsubsection{Minimization and Maximization}
+
+\begin{verbatim}
+// -- Fitness Functions.
+int min(int[] collection, int index_a, int index_b)
+{
+  return collection[index_a] <= collection[index_b] ? index_a : index_b;
+}
+
+int max(int[] collection, int index_a, int index_b)
+{
+  return collection[index_a] >= collection[index_b] ? index_a : index_b;
+}
+
+// -- Functions that find location of maximum / minnimum element in the collection.
+
+int max(int[] collection) = reduce(collection, max);
+int min(int[] collection) = reduce(collection, min);
+
+\end{verbatim}
+
+\newpage
+
+\subsubsection{Valued based Associative Binary Reduction Operations}
+The following algorithm can used to apply a binary operator iterativly over a collection of data. Example associative binary operators include $addition, multiplication, min, max, and, xor, etc$
+
+\begin{verbatim}
+int reduce(int[] collection, op : (int, int) --> int)
+{
+  for(int i = 0; i < collection.size; i++)
+  {
+    result = op(result, i);
+  }
+  return result;
+}
+\end{verbatim}
+
+\subsubsection{Reductions for several common algorithms}
+
+\begin{verbatim}
+int min (int[] collection) = reduce(collection,  min);
+int max (int[] collection) = reduce(collection,  max);
+int sum (int[] collection) = reduce(collection, add, 0);
+int mean(int[] collection) = sum(collection) / collection.size;
+\end{verbatim}
+
+
+\newpage
+		\subsection{Median (Middle) / $k$th largest}
+
+			We will define the median of a linear collection of data to be the value that would be at the middle indice if the collection were sorted. An equivilant definition is the value $v$ such that half of the values not equal to $v$ are less than $v$ and half are greater.
+
+\subsubsection{Median of 3 Numbers. $\bigO(1)$ work.}
+
+Please see Section \ref{Minimum algorithms} for the implementation of $min(int[], int...)$
+
+Determines the index $i$ such that $collection[i]$ is the median of $collection[index\_a]$, $collection[index\_b]$, and $collection[index\_c]$.
+
+\begin{verbatim}
+int med3_index(int[] collection, int index_a, int index_b, int index_c)
+{
+  int min_index = min(collection, index_a, index_b, index_c);
+  int not_min_index_1 = (min_index == index_a) ? index_b : index_a;
+  int not_min_index_2 = (min_index == index_c) ? index_b : index_c;
+
+  return min(colection, not_min_index_1, not_min_index_2);
+}
+
+// Returns value of the median of 3 numbers.
+int med3(int a, int b, int c)
+{
+  int min = min(a, b);
+  int not_min_1 = max(a, b);// Implied by last line.
+  int not_min_2 = max(min, c);
+
+  return min(not_min_1, not_min_2);
+}
+\end{verbatim}
+
+
+\subsubsection{Median of 5 Numbers. $\bigO(1)$ work. 7 comparisons.}
+
+Note : 6 comparisons is optimal.
+
+\begin{verbatim}
+// Returns value of the median of 3 numbers.
+int med5(int a, int b, int c, ind d, int e)
+{
+  sort(ref a, ref b);// 1
+  sort(ref c, ref d);// 2
+
+  sort(ref a, ref c);// 3
+  sort(ref b, ref d);// 4
+
+  // a and d are too high and low to be the median.
+  return med3(b, c, e);// 5, 6, 7.  
+}
+\end{verbatim}
+
+
+\newpage
+
+		\subsubsection{Verification Procedure. $\bigO(n)$ work, $\bigO(log(n)$ span.}
+
+A procedure for determining whether or not a particular element is the median.
+
+\begin{verbatim}
+bool isMedian(int median_value, Iterable<int> collection)
+{
+  int lesser = 0, greater = 0;
+
+  for e in collection
+  {
+    if (e < median_value) then (lesser++)
+    if (e > median_value) then (greater++)
+  }
+  return (|lesser - greater| <= 1);
+}
+\end{verbatim}
+
+To determine the $k$th largest element, replace the return statement with:
+\begin{verbatim}
+return lesser <= k && greater < collection.size - k;
+\end{verbatim}
+
+		\subsubsection{Brute Force Median Find Algorithm. $\bigO(n^{2})$ work, $\bigO(log(n))$ span.}
+
+\begin{verbatim}
+int Median(Iterable<int> collection)
+{
+  for e in collection
+  {
+    if (isMedian(e, collection)) then (return e)
+  }
+  throw new Error("Cannot Get Here.");
+}
+\end{verbatim}
+
+\newpage
+
+		\subsubsection{Pseudo Median. $\bigO(1)$ work.}
+
+\begin{verbatim}
+int pseudo_median(int[] collection)
+{
+  int index_1, index_2, index_3 = random_integer in [0, collection.size);
+  return med3_index(collection, index_1, index_2, index_3);
+}
+\end{verbatim}
+
+		\subsubsection{Quick Select Algorithm. $\mathbb{E}(\bigO(n))$ work. }
+
+Please see \ref{Partitioning Algorithms} for partitioning algorithms.
+
+\begin{verbatim}
+int Median(int[] collection, int k)
+{
+  int val = collection[pseudo_median(collection)];
+  int[] lesser, equal, greater;
+  partition(collection, lesser, equal, greater, val);
+
+  if(k < lesser.size) then return Median(lesser, k);
+
+  int size_non_greater = lesser.size + equal.size;
+  if(k > size_non_greater) then return Median(greater, k - size_non_greater);
+
+  return val;
+}
+\end{verbatim}
+
+\subsubsection{Linear Time Selection Algorithm. $\bigO(n)$ work. }
+
+To achieve a guranteed linear time Median find algorithm, replace the constant time pseudo\_median implementation with the following procedure, where the Median function referenced therin is a co-recursive call to the quick select based median.
+
+\begin{verbatim}
+int linear_pseudo_median(int[] collection)
+{
+  int[] medians;
+
+  for(int i = 0; i < collection.size/5; i++)
+  {
+    int j = i*5;
+    medians[j] = med5(collection[j + 0], collection[j + 1], collection[j + 2],
+                      collection[j + 3], collection[j + 4]);
+  }
+   return Median(medians);
+}
+\end{verbatim}
+
+The resulting recurrence solves to $\bigO(n)$:
+
+$$T(n) = T\left(\frac{2}{10}\right) + T\left(\frac{7}{10}\right) + c\cdot n$$
+
+
+	\chapter{Parallel Algorithms}  \label{parallel algorithms}
+
+		\section{Inclusive Scan}
+
+		This is a wonderful algorithm that can be used to magically build many other parallel algorithms.
+
+		\section{Addition}.
 
 \part{Inefficient and Obscure Algorithms and Data Structures}
 
 .
-
 
 
 \begin{thebibliography}{9}

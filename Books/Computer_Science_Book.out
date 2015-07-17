@@ -1,0 +1,208 @@
+\BOOKMARK [-1][-]{part.1}{I Fundamentals}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Mathematical Objects}{part.1}% 2
+\BOOKMARK [0][-]{chapter.2}{Fundamental Distinctions}{part.1}% 3
+\BOOKMARK [1][-]{section.2.1}{Chapter Overview}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Descriptions}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{Interfaces}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.3.1}{Types}{section.2.3}% 7
+\BOOKMARK [2][-]{subsection.2.3.2}{Abstract Data Types}{section.2.3}% 8
+\BOOKMARK [1][-]{section.2.4}{Implementations}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.4.1}{Data Structures}{section.2.4}% 10
+\BOOKMARK [1][-]{section.2.5}{Analysis}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.6}{"Cooking" Example}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.6.1}{Scenario}{section.2.6}% 13
+\BOOKMARK [2][-]{subsection.2.6.2}{Description}{section.2.6}% 14
+\BOOKMARK [2][-]{subsection.2.6.3}{Interface}{section.2.6}% 15
+\BOOKMARK [2][-]{subsection.2.6.4}{Implementation}{section.2.6}% 16
+\BOOKMARK [2][-]{subsection.2.6.5}{Analysis}{section.2.6}% 17
+\BOOKMARK [0][-]{chapter.3}{Memory, Data, and Interpretation}{part.1}% 18
+\BOOKMARK [1][-]{section.3.1}{Overview}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Bits}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{Memory}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.4}{Byte}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.5}{2's Complement}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.6}{Booleans}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.7}{Pointers}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.8}{Structures}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.9}{Pairs}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.10}{Static Memory Allocation}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.11}{Dynamic Memory Allocation}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.12}{Memory Deallocation}{chapter.3}% 30
+\BOOKMARK [1][-]{section.3.13}{Chars}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.14}{Strings}{chapter.3}% 32
+\BOOKMARK [0][-]{chapter.4}{General Definitions}{part.1}% 33
+\BOOKMARK [1][-]{section.4.1}{Imperative Programming}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.2}{Purely Functional Programming}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.3}{Declarative Programming}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.4}{Object Oriented Programming}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.5}{Algorithm}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.6}{Computation and Procedures}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.7}{Deterministic vs. Randomized}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.8}{Sequential versus Parallel}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.9}{Recursion}{chapter.4}% 42
+\BOOKMARK [0][-]{chapter.5}{Data Structure Definitions}{part.1}% 43
+\BOOKMARK [1][-]{section.5.1}{Overview}{chapter.5}% 44
+\BOOKMARK [1][-]{section.5.2}{Ephemeral vs. Persistant}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.3}{Packaged vs. Unpackaged.}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.4}{Indexed vs. Non-Indexed}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.5}{Finite vs. Infinite}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.6}{Fixed Size vs. Resizable}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.7}{Ordered vs. Unordered}{chapter.5}% 50
+\BOOKMARK [1][-]{section.5.8}{Enumeratable and Iterable}{chapter.5}% 51
+\BOOKMARK [1][-]{section.5.9}{Transversals}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.10}{Eager vs. Lazy}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.11}{Simple vs. Performant vs. Efficient}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.12}{Amortized versus Non Amortized}{chapter.5}% 55
+\BOOKMARK [1][-]{section.5.13}{Endogeneous vs. Exogeneous}{chapter.5}% 56
+\BOOKMARK [1][-]{section.5.14}{Null vs. Node terminals}{chapter.5}% 57
+\BOOKMARK [1][-]{section.5.15}{Deterministic vs. Randomized}{chapter.5}% 58
+\BOOKMARK [1][-]{section.5.16}{Sparse vs. Dense}{chapter.5}% 59
+\BOOKMARK [1][-]{section.5.17}{Concurrency safe.}{chapter.5}% 60
+\BOOKMARK [2][-]{subsection.5.17.1}{Motivation}{section.5.17}% 61
+\BOOKMARK [2][-]{subsection.5.17.2}{Mutual Exclusion}{section.5.17}% 62
+\BOOKMARK [2][-]{subsection.5.17.3}{Lock-Free}{section.5.17}% 63
+\BOOKMARK [0][-]{chapter.6}{Analysis}{part.1}% 64
+\BOOKMARK [1][-]{section.6.1}{Overview}{chapter.6}% 65
+\BOOKMARK [1][-]{section.6.2}{Correctness Analysis}{chapter.6}% 66
+\BOOKMARK [2][-]{subsection.6.2.1}{Mathematical Proof}{section.6.2}% 67
+\BOOKMARK [2][-]{subsection.6.2.2}{Empirical Testing}{section.6.2}% 68
+\BOOKMARK [2][-]{subsection.6.2.3}{Formal Methods}{section.6.2}% 69
+\BOOKMARK [1][-]{section.6.3}{Resource Analysis}{chapter.6}% 70
+\BOOKMARK [2][-]{subsection.6.3.1}{Models}{section.6.3}% 71
+\BOOKMARK [1][-]{section.6.4}{Exact Analysis}{chapter.6}% 72
+\BOOKMARK [1][-]{section.6.5}{bigO}{chapter.6}% 73
+\BOOKMARK [2][-]{subsection.6.5.1}{Overview}{section.6.5}% 74
+\BOOKMARK [2][-]{subsection.6.5.2}{Formal Definitions}{section.6.5}% 75
+\BOOKMARK [1][-]{section.6.6}{Asymptotic Analysis}{chapter.6}% 76
+\BOOKMARK [2][-]{subsection.6.6.1}{Overview}{section.6.6}% 77
+\BOOKMARK [2][-]{subsection.6.6.2}{The Adversary.}{section.6.6}% 78
+\BOOKMARK [2][-]{subsection.6.6.3}{Worst Case}{section.6.6}% 79
+\BOOKMARK [2][-]{subsection.6.6.4}{Average Case}{section.6.6}% 80
+\BOOKMARK [2][-]{subsection.6.6.5}{Best Case}{section.6.6}% 81
+\BOOKMARK [2][-]{subsection.6.6.6}{Expected Case}{section.6.6}% 82
+\BOOKMARK [1][-]{section.6.7}{Amortized Analysis}{chapter.6}% 83
+\BOOKMARK [2][-]{subsection.6.7.1}{Motivation}{section.6.7}% 84
+\BOOKMARK [2][-]{subsection.6.7.2}{Banker's Method}{section.6.7}% 85
+\BOOKMARK [2][-]{subsection.6.7.3}{Potential Functions}{section.6.7}% 86
+\BOOKMARK [2][-]{subsection.6.7.4}{Potential Method}{section.6.7}% 87
+\BOOKMARK [1][-]{section.6.8}{Analysis of Parallel Algorithms}{chapter.6}% 88
+\BOOKMARK [2][-]{subsection.6.8.1}{work and span}{section.6.8}% 89
+\BOOKMARK [2][-]{subsection.6.8.2}{Efficiency vs. Speedup}{section.6.8}% 90
+\BOOKMARK [1][-]{section.6.9}{Analysis of Dynamic Programming}{chapter.6}% 91
+\BOOKMARK [1][-]{section.6.10}{Analysis of Recursive Procedures}{chapter.6}% 92
+\BOOKMARK [2][-]{subsection.6.10.1}{Brick Method}{section.6.10}% 93
+\BOOKMARK [1][-]{section.6.11}{Arithmetic Intensity}{chapter.6}% 94
+\BOOKMARK [-1][-]{part.2}{II Abstract Data Types and Data Structures}{}% 95
+\BOOKMARK [0][-]{chapter.7}{ADTs}{part.2}% 96
+\BOOKMARK [1][-]{section.7.1}{Overview}{chapter.7}% 97
+\BOOKMARK [1][-]{section.7.2}{Function}{chapter.7}% 98
+\BOOKMARK [2][-]{subsection.7.2.1}{Interface}{section.7.2}% 99
+\BOOKMARK [2][-]{subsection.7.2.2}{Finite Functions}{section.7.2}% 100
+\BOOKMARK [2][-]{subsection.7.2.3}{Infinite Functions}{section.7.2}% 101
+\BOOKMARK [2][-]{subsection.7.2.4}{Real World Examples.}{section.7.2}% 102
+\BOOKMARK [1][-]{section.7.3}{Stack}{chapter.7}% 103
+\BOOKMARK [2][-]{subsection.7.3.1}{Interface}{section.7.3}% 104
+\BOOKMARK [2][-]{subsection.7.3.2}{Real World Examples.}{section.7.3}% 105
+\BOOKMARK [1][-]{section.7.4}{Queue}{chapter.7}% 106
+\BOOKMARK [2][-]{subsection.7.4.1}{Interface}{section.7.4}% 107
+\BOOKMARK [2][-]{subsection.7.4.2}{Real World Examples.}{section.7.4}% 108
+\BOOKMARK [1][-]{section.7.5}{Deque}{chapter.7}% 109
+\BOOKMARK [2][-]{subsection.7.5.1}{Interface}{section.7.5}% 110
+\BOOKMARK [2][-]{subsection.7.5.2}{Real World Examples.}{section.7.5}% 111
+\BOOKMARK [1][-]{section.7.6}{Priority Queue}{chapter.7}% 112
+\BOOKMARK [2][-]{subsection.7.6.1}{Interface}{section.7.6}% 113
+\BOOKMARK [2][-]{subsection.7.6.2}{Real World Examples.}{section.7.6}% 114
+\BOOKMARK [1][-]{section.7.7}{Set}{chapter.7}% 115
+\BOOKMARK [2][-]{subsection.7.7.1}{Interface}{section.7.7}% 116
+\BOOKMARK [2][-]{subsection.7.7.2}{Real World Examples.}{section.7.7}% 117
+\BOOKMARK [1][-]{section.7.8}{Multi-Set}{chapter.7}% 118
+\BOOKMARK [2][-]{subsection.7.8.1}{Interface}{section.7.8}% 119
+\BOOKMARK [2][-]{subsection.7.8.2}{Real World Examples.}{section.7.8}% 120
+\BOOKMARK [1][-]{section.7.9}{Relations}{chapter.7}% 121
+\BOOKMARK [2][-]{subsection.7.9.1}{Interface}{section.7.9}% 122
+\BOOKMARK [2][-]{subsection.7.9.2}{Real World Examples.}{section.7.9}% 123
+\BOOKMARK [1][-]{section.7.10}{Trees}{chapter.7}% 124
+\BOOKMARK [2][-]{subsection.7.10.1}{Interface}{section.7.10}% 125
+\BOOKMARK [2][-]{subsection.7.10.2}{Full Trees}{section.7.10}% 126
+\BOOKMARK [2][-]{subsection.7.10.3}{Complete Trees}{section.7.10}% 127
+\BOOKMARK [2][-]{subsection.7.10.4}{Binary Trees}{section.7.10}% 128
+\BOOKMARK [2][-]{subsection.7.10.5}{Binary Search Trees}{section.7.10}% 129
+\BOOKMARK [2][-]{subsection.7.10.6}{Balanced Binary Search Trees.}{section.7.10}% 130
+\BOOKMARK [2][-]{subsection.7.10.7}{Heaps}{section.7.10}% 131
+\BOOKMARK [2][-]{subsection.7.10.8}{Tree Transversals}{section.7.10}% 132
+\BOOKMARK [0][-]{chapter.8}{Data Structures}{part.2}% 133
+\BOOKMARK [1][-]{section.8.1}{Overview}{chapter.8}% 134
+\BOOKMARK [1][-]{section.8.2}{Arrays}{chapter.8}% 135
+\BOOKMARK [2][-]{subsection.8.2.1}{Fixed Size Arrays}{section.8.2}% 136
+\BOOKMARK [2][-]{subsection.8.2.2}{Strings}{section.8.2}% 137
+\BOOKMARK [1][-]{section.8.3}{Lists}{chapter.8}% 138
+\BOOKMARK [2][-]{subsection.8.3.1}{Endogenous vs. exogenous}{section.8.3}% 139
+\BOOKMARK [2][-]{subsection.8.3.2}{Single vs. Double}{section.8.3}% 140
+\BOOKMARK [2][-]{subsection.8.3.3}{Linear vs. Circular}{section.8.3}% 141
+\BOOKMARK [1][-]{section.8.4}{Unbounded Arrays \(UBA\)}{chapter.8}% 142
+\BOOKMARK [2][-]{subsection.8.4.1}{Overview}{section.8.4}% 143
+\BOOKMARK [2][-]{subsection.8.4.2}{Amortized Analysis.}{section.8.4}% 144
+\BOOKMARK [1][-]{section.8.5}{Stacks}{chapter.8}% 145
+\BOOKMARK [2][-]{subsection.8.5.1}{Interface}{section.8.5}% 146
+\BOOKMARK [2][-]{subsection.8.5.2}{Array Implementations}{section.8.5}% 147
+\BOOKMARK [2][-]{subsection.8.5.3}{List Implementations}{section.8.5}% 148
+\BOOKMARK [2][-]{subsection.8.5.4}{Persistant Stacks}{section.8.5}% 149
+\BOOKMARK [2][-]{subsection.8.5.5}{Max/Min Stacks}{section.8.5}% 150
+\BOOKMARK [2][-]{subsection.8.5.6}{Function Call Stack}{section.8.5}% 151
+\BOOKMARK [1][-]{section.8.6}{Queues}{chapter.8}% 152
+\BOOKMARK [2][-]{subsection.8.6.1}{Interface}{section.8.6}% 153
+\BOOKMARK [2][-]{subsection.8.6.2}{List Implementation}{section.8.6}% 154
+\BOOKMARK [2][-]{subsection.8.6.3}{Array Implementation}{section.8.6}% 155
+\BOOKMARK [2][-]{subsection.8.6.4}{Fairness}{section.8.6}% 156
+\BOOKMARK [2][-]{subsection.8.6.5}{Pipelining}{section.8.6}% 157
+\BOOKMARK [2][-]{subsection.8.6.6}{Queuing Theory}{section.8.6}% 158
+\BOOKMARK [2][-]{subsection.8.6.7}{Two Stacks}{section.8.6}% 159
+\BOOKMARK [1][-]{section.8.7}{Dequeues}{chapter.8}% 160
+\BOOKMARK [1][-]{section.8.8}{Heaps}{chapter.8}% 161
+\BOOKMARK [1][-]{section.8.9}{Union Find Structures}{chapter.8}% 162
+\BOOKMARK [1][-]{section.8.10}{Hash Tables}{chapter.8}% 163
+\BOOKMARK [1][-]{section.8.11}{Maps}{chapter.8}% 164
+\BOOKMARK [1][-]{section.8.12}{Bloom Filters}{chapter.8}% 165
+\BOOKMARK [1][-]{section.8.13}{Link-Cut trees}{chapter.8}% 166
+\BOOKMARK [1][-]{section.8.14}{Binary Search Trees}{chapter.8}% 167
+\BOOKMARK [1][-]{section.8.15}{D-ary Trees}{chapter.8}% 168
+\BOOKMARK [1][-]{section.8.16}{Graphs}{chapter.8}% 169
+\BOOKMARK [1][-]{section.8.17}{Cycle}{chapter.8}% 170
+\BOOKMARK [1][-]{section.8.18}{Streams}{chapter.8}% 171
+\BOOKMARK [1][-]{section.8.19}{Tries}{chapter.8}% 172
+\BOOKMARK [1][-]{section.8.20}{Suffix Tries}{chapter.8}% 173
+\BOOKMARK [1][-]{section.8.21}{Binary Descision Diagrams}{chapter.8}% 174
+\BOOKMARK [1][-]{section.8.22}{Bit Sets}{chapter.8}% 175
+\BOOKMARK [-1][-]{part.3}{III Fixed Size Data Structures.}{}% 176
+\BOOKMARK [-1][-]{part.4}{IV Algorithms}{}% 177
+\BOOKMARK [0][-]{chapter.9}{Sorting Algorithms}{part.4}% 178
+\BOOKMARK [1][-]{section.9.1}{Selection Sort}{chapter.9}% 179
+\BOOKMARK [1][-]{section.9.2}{Insertion Sort}{chapter.9}% 180
+\BOOKMARK [1][-]{section.9.3}{Merge Sort}{chapter.9}% 181
+\BOOKMARK [1][-]{section.9.4}{Quick Sort}{chapter.9}% 182
+\BOOKMARK [1][-]{section.9.5}{Radix Sort}{chapter.9}% 183
+\BOOKMARK [1][-]{section.9.6}{Bucket Sort}{chapter.9}% 184
+\BOOKMARK [1][-]{section.9.7}{Binary Search Tree Sort}{chapter.9}% 185
+\BOOKMARK [1][-]{section.9.8}{Heap Sort}{chapter.9}% 186
+\BOOKMARK [0][-]{chapter.10}{Search Algorithms}{part.4}% 187
+\BOOKMARK [1][-]{section.10.1}{Collection Searches}{chapter.10}% 188
+\BOOKMARK [2][-]{subsection.10.1.1}{Linear Search}{section.10.1}% 189
+\BOOKMARK [2][-]{subsection.10.1.2}{Binary Search}{section.10.1}% 190
+\BOOKMARK [1][-]{section.10.2}{Graph Searches}{chapter.10}% 191
+\BOOKMARK [2][-]{subsection.10.2.1}{BFS}{section.10.2}% 192
+\BOOKMARK [2][-]{subsection.10.2.2}{DFS}{section.10.2}% 193
+\BOOKMARK [2][-]{subsection.10.2.3}{A* Search}{section.10.2}% 194
+\BOOKMARK [2][-]{subsection.10.2.4}{Weighted A* Search}{section.10.2}% 195
+\BOOKMARK [2][-]{subsection.10.2.5}{A* recomputations}{section.10.2}% 196
+\BOOKMARK [1][-]{section.10.3}{Game Tree Searches}{chapter.10}% 197
+\BOOKMARK [2][-]{subsection.10.3.1}{MiniMax}{section.10.3}% 198
+\BOOKMARK [2][-]{subsection.10.3.2}{AlphaBeta Pruning}{section.10.3}% 199
+\BOOKMARK [2][-]{subsection.10.3.3}{Iterative Deepening}{section.10.3}% 200
+\BOOKMARK [0][-]{chapter.11}{Common Algorithms for Linear Collections of Numbers}{part.4}% 201
+\BOOKMARK [1][-]{subsection.11.0.4}{Partitioning}{chapter.11}% 202
+\BOOKMARK [2][-]{subsection.11.0.5}{Linear Reduce Operations. O\(n\) work, O\(log\(n\)\) span.}{subsection.11.0.4}% 203
+\BOOKMARK [2][-]{subsection.11.0.6}{Median \(Middle\) / kth largest}{subsection.11.0.4}% 204
+\BOOKMARK [0][-]{chapter.12}{Parallel Algorithms}{part.4}% 205
+\BOOKMARK [1][-]{section.12.1}{Inclusive Scan}{chapter.12}% 206
+\BOOKMARK [1][-]{section.12.2}{Addition}{chapter.12}% 207
+\BOOKMARK [-1][-]{part.5}{V Inefficient and Obscure Algorithms and Data Structures}{}% 208

@@ -1,0 +1,234 @@
+\contentsline {part}{I\hspace {1em}Fundamentals}{9}{part.1}
+\contentsline {chapter}{\numberline {1}Mathematical Objects}{11}{chapter.1}
+\contentsline {chapter}{\numberline {2}Fundamental Distinctions}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Chapter Overview}{13}{section.2.1}
+\contentsline {section}{\numberline {2.2}Descriptions}{13}{section.2.2}
+\contentsline {section}{\numberline {2.3}Interfaces}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Types}{14}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Abstract Data Types}{14}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Implementations}{14}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Data Structures}{14}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}Analysis}{15}{section.2.5}
+\contentsline {section}{\numberline {2.6}"Cooking" Example}{15}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Scenario}{15}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Description}{15}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Interface}{15}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}Implementation}{15}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}Analysis}{16}{subsection.2.6.5}
+\contentsline {chapter}{\numberline {3}Memory, Data, and Interpretation}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Overview}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Bits}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}Memory}{17}{section.3.3}
+\contentsline {section}{\numberline {3.4}Byte}{18}{section.3.4}
+\contentsline {section}{\numberline {3.5}2's Complement}{18}{section.3.5}
+\contentsline {section}{\numberline {3.6}Booleans}{19}{section.3.6}
+\contentsline {section}{\numberline {3.7}Pointers}{19}{section.3.7}
+\contentsline {section}{\numberline {3.8}Structures}{19}{section.3.8}
+\contentsline {section}{\numberline {3.9}Pairs}{19}{section.3.9}
+\contentsline {section}{\numberline {3.10}Static Memory Allocation}{19}{section.3.10}
+\contentsline {section}{\numberline {3.11}Dynamic Memory Allocation}{20}{section.3.11}
+\contentsline {section}{\numberline {3.12}Memory Deallocation}{20}{section.3.12}
+\contentsline {section}{\numberline {3.13}Chars}{20}{section.3.13}
+\contentsline {section}{\numberline {3.14}Strings}{20}{section.3.14}
+\contentsline {chapter}{\numberline {4}General Definitions}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Imperative Programming}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Purely Functional Programming}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Declarative Programming}{22}{section.4.3}
+\contentsline {section}{\numberline {4.4}Object Oriented Programming}{22}{section.4.4}
+\contentsline {section}{\numberline {4.5}Algorithm}{22}{section.4.5}
+\contentsline {section}{\numberline {4.6}Computation and Procedures}{22}{section.4.6}
+\contentsline {section}{\numberline {4.7}Deterministic vs. Randomized}{22}{section.4.7}
+\contentsline {section}{\numberline {4.8}Sequential versus Parallel}{22}{section.4.8}
+\contentsline {section}{\numberline {4.9}Recursion}{22}{section.4.9}
+\contentsline {chapter}{\numberline {5}Data Structure Definitions}{23}{chapter.5}
+\contentsline {section}{\numberline {5.1}Overview}{23}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ephemeral vs. Persistant}{23}{section.5.2}
+\contentsline {section}{\numberline {5.3}Packaged vs. Unpackaged.}{23}{section.5.3}
+\contentsline {section}{\numberline {5.4}Indexed vs. Non-Indexed}{24}{section.5.4}
+\contentsline {section}{\numberline {5.5}Finite vs. Infinite}{24}{section.5.5}
+\contentsline {section}{\numberline {5.6}Fixed Size vs. Resizable}{24}{section.5.6}
+\contentsline {section}{\numberline {5.7}Ordered vs. Unordered}{25}{section.5.7}
+\contentsline {section}{\numberline {5.8}Enumeratable and Iterable}{25}{section.5.8}
+\contentsline {section}{\numberline {5.9}Transversals}{25}{section.5.9}
+\contentsline {section}{\numberline {5.10}Eager vs. Lazy}{26}{section.5.10}
+\contentsline {section}{\numberline {5.11}Simple vs. Performant vs. Efficient}{26}{section.5.11}
+\contentsline {section}{\numberline {5.12}Amortized versus Non Amortized}{26}{section.5.12}
+\contentsline {section}{\numberline {5.13}Endogeneous vs. Exogeneous}{27}{section.5.13}
+\contentsline {section}{\numberline {5.14}Null vs. Node terminals}{27}{section.5.14}
+\contentsline {section}{\numberline {5.15}Deterministic vs. Randomized}{27}{section.5.15}
+\contentsline {section}{\numberline {5.16}Sparse vs. Dense}{28}{section.5.16}
+\contentsline {section}{\numberline {5.17}Concurrency safe.}{28}{section.5.17}
+\contentsline {subsection}{\numberline {5.17.1}Motivation}{28}{subsection.5.17.1}
+\contentsline {subsection}{\numberline {5.17.2}Mutual Exclusion}{28}{subsection.5.17.2}
+\contentsline {subsection}{\numberline {5.17.3}Lock-Free}{28}{subsection.5.17.3}
+\contentsline {chapter}{\numberline {6}Analysis}{29}{chapter.6}
+\contentsline {section}{\numberline {6.1}Overview}{29}{section.6.1}
+\contentsline {section}{\numberline {6.2}Correctness Analysis}{29}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Mathematical Proof}{29}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Empirical Testing}{30}{subsection.6.2.2}
+\contentsline {subsubsection}{Unit Testing}{30}{section*.2}
+\contentsline {subsection}{\numberline {6.2.3}Formal Methods}{30}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Resource Analysis}{31}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Models}{31}{subsection.6.3.1}
+\contentsline {subsubsection}{Time}{31}{section*.3}
+\contentsline {subsubsection}{Memory}{31}{section*.4}
+\contentsline {subsubsection}{Energy}{31}{section*.5}
+\contentsline {section}{\numberline {6.4}Exact Analysis}{32}{section.6.4}
+\contentsline {section}{\numberline {6.5}bigO}{33}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Overview}{33}{subsection.6.5.1}
+\contentsline {subsubsection}{Warning}{33}{section*.6}
+\contentsline {subsection}{\numberline {6.5.2}Formal Definitions}{33}{subsection.6.5.2}
+\contentsline {section}{\numberline {6.6}Asymptotic Analysis}{33}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Overview}{33}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}The Adversary.}{34}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}Worst Case}{34}{subsection.6.6.3}
+\contentsline {subsection}{\numberline {6.6.4}Average Case}{35}{subsection.6.6.4}
+\contentsline {subsection}{\numberline {6.6.5}Best Case}{35}{subsection.6.6.5}
+\contentsline {subsection}{\numberline {6.6.6}Expected Case}{35}{subsection.6.6.6}
+\contentsline {section}{\numberline {6.7}Amortized Analysis}{35}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Motivation}{35}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Banker's Method}{36}{subsection.6.7.2}
+\contentsline {subsubsection}{Example}{36}{section*.7}
+\contentsline {subsubsection}{Turnstile vs. Cash Register Model}{37}{section*.8}
+\contentsline {subsection}{\numberline {6.7.3}Potential Functions}{37}{subsection.6.7.3}
+\contentsline {subsection}{\numberline {6.7.4}Potential Method}{38}{subsection.6.7.4}
+\contentsline {subsubsection}{Key Idea}{38}{section*.9}
+\contentsline {section}{\numberline {6.8}Analysis of Parallel Algorithms}{39}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}work and span}{39}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}Efficiency vs. Speedup}{39}{subsection.6.8.2}
+\contentsline {section}{\numberline {6.9}Analysis of Dynamic Programming}{39}{section.6.9}
+\contentsline {section}{\numberline {6.10}Analysis of Recursive Procedures}{39}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Brick Method}{39}{subsection.6.10.1}
+\contentsline {section}{\numberline {6.11}Arithmetic Intensity}{40}{section.6.11}
+\contentsline {part}{II\hspace {1em}Abstract Data Types and Data Structures}{41}{part.2}
+\contentsline {chapter}{\numberline {7}ADTs}{43}{chapter.7}
+\contentsline {section}{\numberline {7.1}Overview}{43}{section.7.1}
+\contentsline {section}{\numberline {7.2}Function}{45}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Interface}{45}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Finite Functions}{45}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Infinite Functions}{45}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Real World Examples.}{45}{subsection.7.2.4}
+\contentsline {section}{\numberline {7.3}Stack}{45}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Interface}{45}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Real World Examples.}{45}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Queue}{45}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Interface}{45}{subsection.7.4.1}
+\contentsline {subsection}{\numberline {7.4.2}Real World Examples.}{45}{subsection.7.4.2}
+\contentsline {section}{\numberline {7.5}Deque}{45}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Interface}{45}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Real World Examples.}{45}{subsection.7.5.2}
+\contentsline {section}{\numberline {7.6}Priority Queue}{45}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}Interface}{45}{subsection.7.6.1}
+\contentsline {subsection}{\numberline {7.6.2}Real World Examples.}{45}{subsection.7.6.2}
+\contentsline {section}{\numberline {7.7}Set}{45}{section.7.7}
+\contentsline {subsection}{\numberline {7.7.1}Interface}{45}{subsection.7.7.1}
+\contentsline {subsection}{\numberline {7.7.2}Real World Examples.}{45}{subsection.7.7.2}
+\contentsline {section}{\numberline {7.8}Multi-Set}{45}{section.7.8}
+\contentsline {subsection}{\numberline {7.8.1}Interface}{45}{subsection.7.8.1}
+\contentsline {subsection}{\numberline {7.8.2}Real World Examples.}{45}{subsection.7.8.2}
+\contentsline {section}{\numberline {7.9}Relations}{45}{section.7.9}
+\contentsline {subsection}{\numberline {7.9.1}Interface}{45}{subsection.7.9.1}
+\contentsline {subsection}{\numberline {7.9.2}Real World Examples.}{45}{subsection.7.9.2}
+\contentsline {section}{\numberline {7.10}Trees}{45}{section.7.10}
+\contentsline {subsection}{\numberline {7.10.1}Interface}{45}{subsection.7.10.1}
+\contentsline {subsection}{\numberline {7.10.2}Full Trees}{45}{subsection.7.10.2}
+\contentsline {subsection}{\numberline {7.10.3}Complete Trees}{45}{subsection.7.10.3}
+\contentsline {subsection}{\numberline {7.10.4}Binary Trees}{45}{subsection.7.10.4}
+\contentsline {subsection}{\numberline {7.10.5}Binary Search Trees}{45}{subsection.7.10.5}
+\contentsline {subsection}{\numberline {7.10.6}Balanced Binary Search Trees.}{45}{subsection.7.10.6}
+\contentsline {subsection}{\numberline {7.10.7}Heaps}{45}{subsection.7.10.7}
+\contentsline {subsection}{\numberline {7.10.8}Tree Transversals}{45}{subsection.7.10.8}
+\contentsline {chapter}{\numberline {8}Data Structures}{47}{chapter.8}
+\contentsline {section}{\numberline {8.1}Overview}{47}{section.8.1}
+\contentsline {section}{\numberline {8.2}Arrays}{49}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Fixed Size Arrays}{49}{subsection.8.2.1}
+\contentsline {subsubsection}{Description}{49}{section*.10}
+\contentsline {subsubsection}{Interface}{49}{section*.11}
+\contentsline {subsubsection}{Implementation}{49}{section*.12}
+\contentsline {subsubsection}{Analysis}{49}{section*.13}
+\contentsline {subsection}{\numberline {8.2.2}Strings}{49}{subsection.8.2.2}
+\contentsline {section}{\numberline {8.3}Lists}{49}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Endogenous vs. exogenous}{49}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Single vs. Double}{49}{subsection.8.3.2}
+\contentsline {subsection}{\numberline {8.3.3}Linear vs. Circular}{49}{subsection.8.3.3}
+\contentsline {section}{\numberline {8.4}Unbounded Arrays (UBA)}{49}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Overview}{49}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Amortized Analysis.}{49}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Stacks}{49}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Interface}{49}{subsection.8.5.1}
+\contentsline {subsection}{\numberline {8.5.2}Array Implementations}{49}{subsection.8.5.2}
+\contentsline {subsubsection}{Amortized Analysis}{49}{section*.14}
+\contentsline {subsection}{\numberline {8.5.3}List Implementations}{49}{subsection.8.5.3}
+\contentsline {subsection}{\numberline {8.5.4}Persistant Stacks}{49}{subsection.8.5.4}
+\contentsline {subsection}{\numberline {8.5.5}Max/Min Stacks}{49}{subsection.8.5.5}
+\contentsline {subsection}{\numberline {8.5.6}Function Call Stack}{49}{subsection.8.5.6}
+\contentsline {section}{\numberline {8.6}Queues}{49}{section.8.6}
+\contentsline {subsection}{\numberline {8.6.1}Interface}{49}{subsection.8.6.1}
+\contentsline {subsection}{\numberline {8.6.2}List Implementation}{49}{subsection.8.6.2}
+\contentsline {subsection}{\numberline {8.6.3}Array Implementation}{49}{subsection.8.6.3}
+\contentsline {subsection}{\numberline {8.6.4}Fairness}{49}{subsection.8.6.4}
+\contentsline {subsection}{\numberline {8.6.5}Pipelining}{49}{subsection.8.6.5}
+\contentsline {subsection}{\numberline {8.6.6}Queuing Theory}{49}{subsection.8.6.6}
+\contentsline {subsection}{\numberline {8.6.7}Two Stacks}{49}{subsection.8.6.7}
+\contentsline {section}{\numberline {8.7}Dequeues}{49}{section.8.7}
+\contentsline {section}{\numberline {8.8}Heaps}{49}{section.8.8}
+\contentsline {section}{\numberline {8.9}Union Find Structures}{49}{section.8.9}
+\contentsline {section}{\numberline {8.10}Hash Tables}{49}{section.8.10}
+\contentsline {section}{\numberline {8.11}Maps}{49}{section.8.11}
+\contentsline {section}{\numberline {8.12}Bloom Filters}{49}{section.8.12}
+\contentsline {section}{\numberline {8.13}Link-Cut trees}{49}{section.8.13}
+\contentsline {section}{\numberline {8.14}Binary Search Trees}{49}{section.8.14}
+\contentsline {section}{\numberline {8.15}D-ary Trees}{49}{section.8.15}
+\contentsline {section}{\numberline {8.16}Graphs}{49}{section.8.16}
+\contentsline {section}{\numberline {8.17}Cycle}{49}{section.8.17}
+\contentsline {section}{\numberline {8.18}Streams}{49}{section.8.18}
+\contentsline {section}{\numberline {8.19}Tries}{49}{section.8.19}
+\contentsline {section}{\numberline {8.20}Suffix Tries}{49}{section.8.20}
+\contentsline {section}{\numberline {8.21}Binary Descision Diagrams}{49}{section.8.21}
+\contentsline {section}{\numberline {8.22}Bit Sets}{49}{section.8.22}
+\contentsline {part}{III\hspace {1em}Fixed Size Data Structures.}{51}{part.3}
+\contentsline {part}{IV\hspace {1em}Algorithms}{53}{part.4}
+\contentsline {chapter}{\numberline {9}Sorting Algorithms}{55}{chapter.9}
+\contentsline {section}{\numberline {9.1}Selection Sort}{55}{section.9.1}
+\contentsline {section}{\numberline {9.2}Insertion Sort}{55}{section.9.2}
+\contentsline {section}{\numberline {9.3}Merge Sort}{55}{section.9.3}
+\contentsline {section}{\numberline {9.4}Quick Sort}{55}{section.9.4}
+\contentsline {section}{\numberline {9.5}Radix Sort}{55}{section.9.5}
+\contentsline {section}{\numberline {9.6}Bucket Sort}{55}{section.9.6}
+\contentsline {section}{\numberline {9.7}Binary Search Tree Sort}{55}{section.9.7}
+\contentsline {section}{\numberline {9.8}Heap Sort}{55}{section.9.8}
+\contentsline {chapter}{\numberline {10}Search Algorithms}{57}{chapter.10}
+\contentsline {section}{\numberline {10.1}Collection Searches}{57}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Linear Search}{57}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Binary Search}{57}{subsection.10.1.2}
+\contentsline {section}{\numberline {10.2}Graph Searches}{57}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}BFS}{57}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}DFS}{57}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}A* Search}{57}{subsection.10.2.3}
+\contentsline {subsection}{\numberline {10.2.4}Weighted A* Search}{57}{subsection.10.2.4}
+\contentsline {subsection}{\numberline {10.2.5}A* recomputations}{57}{subsection.10.2.5}
+\contentsline {section}{\numberline {10.3}Game Tree Searches}{57}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}MiniMax}{57}{subsection.10.3.1}
+\contentsline {subsection}{\numberline {10.3.2}AlphaBeta Pruning}{57}{subsection.10.3.2}
+\contentsline {subsection}{\numberline {10.3.3}Iterative Deepening}{57}{subsection.10.3.3}
+\contentsline {chapter}{\numberline {11}Common Algorithms for Linear Collections of Numbers}{59}{chapter.11}
+\contentsline {subsection}{\numberline {11.0.4}Partitioning}{59}{subsection.11.0.4}
+\contentsline {subsubsection}{Non destructive Partitioning. $\mathcal {O}(n)$ work, $\mathcal {O}(n)$ memory, $\mathcal {O}(log(n))$ span.}{59}{section*.15}
+\contentsline {subsubsection}{Destructive Partitioning. $\mathcal {O}(n)$ work, $\mathcal {O}(1)$ memory}{59}{section*.16}
+\contentsline {subsection}{\numberline {11.0.5}Linear Reduce Operations. $\mathcal {O}(n)$ work, $\mathcal {O}(log(n))$ span.}{60}{subsection.11.0.5}
+\contentsline {subsubsection}{Location Based Element Search}{60}{section*.17}
+\contentsline {subsubsection}{Minimization and Maximization}{60}{section*.18}
+\contentsline {subsubsection}{Valued based Associative Binary Reduction Operations}{61}{section*.19}
+\contentsline {subsubsection}{Reductions for several common algorithms}{61}{section*.20}
+\contentsline {subsection}{\numberline {11.0.6}Median (Middle) / $k$th largest}{62}{subsection.11.0.6}
+\contentsline {subsubsection}{Median of 3 Numbers. $\mathcal {O}(1)$ work.}{62}{section*.21}
+\contentsline {subsubsection}{Median of 5 Numbers. $\mathcal {O}(1)$ work. 7 comparisons.}{62}{section*.22}
+\contentsline {subsubsection}{Verification Procedure. $\mathcal {O}(n)$ work, $\mathcal {O}(log(n)$ span.}{63}{section*.23}
+\contentsline {subsubsection}{Brute Force Median Find Algorithm. $\mathcal {O}(n^{2})$ work, $\mathcal {O}(log(n))$ span.}{63}{section*.24}
+\contentsline {subsubsection}{Pseudo Median. $\mathcal {O}(1)$ work.}{64}{section*.25}
+\contentsline {subsubsection}{Quick Select Algorithm. $\mathbb {E}(\mathcal {O}(n))$ work. }{64}{section*.26}
+\contentsline {subsubsection}{Linear Time Selection Algorithm. $\mathcal {O}(n)$ work. }{64}{section*.27}
+\contentsline {chapter}{\numberline {12}Parallel Algorithms}{65}{chapter.12}
+\contentsline {section}{\numberline {12.1}Inclusive Scan}{65}{section.12.1}
+\contentsline {section}{\numberline {12.2}Addition}{65}{section.12.2}
+\contentsline {part}{V\hspace {1em}Inefficient and Obscure Algorithms and Data Structures}{67}{part.5}
