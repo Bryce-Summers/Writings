@@ -34,7 +34,7 @@
 
 \begin{document}
 
-\title{\color{blue}Hump Yard Rules v1.2}
+\title{\color{blue}Hump Yard Rules v1.3}
 \author{Written by Bryce Summers \texttt(BryceSummers.com)}
 \date{\color{red}Last Updated: \today}
 \maketitle
@@ -43,7 +43,7 @@
 
 \section{Overview}
 
-Hump Yard is a game about efficiently managing a rail classification yard. Players procure train cars and track, build networks, and engage in strategic trading.
+Hump Yard is a game about creating the most efficient yard possible in order to win more sorting contracts than your opponents.
 
 \newpage
 \section{Components}
@@ -82,31 +82,8 @@ Hump Yard comes with 4 of each of the following \textit{normal} Track tiles:
 \includegraphics[width=0.25\textwidth]{Source.png} $\times 8$
 \includegraphics[width=0.25\textwidth]{Sink.png} $\times 8$
 
+Pieces, Colorful Car cards.
 
-\section{Game Play Regions}
-
-\subsection{Track Market}
-The track market is a region that will be used to store pieces of track that are currently being sold. Every turn players will bid for the right to purchase specific pieces of track. All players will receive one piece of track from the track marcket every turn.
-
-\subsection{Train Contract Market}
-
-The Train Contract Market is a region that will be used to store contracts that players may bid for. Contracts consist of sets of train cars that may be sold to a buyer. Players wish to obtain
-
-\subsection{Train Car Market}
-
-The Train Car Market is used to store train cars that are currently for sale. Cars are won by bidding and the minnimum bid of each car decreases over time.
-
-\subsection{Player Yards}
-
-Each Player has a yard area where they will build their yard and store and shunt train cars.
-
-\subsection{Generating a Contract}
-
-\subsection{Generating Rolling Stock}
-
-\subsection{Shunting}
-
-\newpage
 
 \section{Rules of Play}
 
@@ -123,70 +100,62 @@ Every players sets up their yard as follows with 5 of their collored heading tra
 \includegraphics[width=0.10\textwidth]{Sink.png}
 
 It is perfectly fine to have the headings point downwards if desired.
-\begin{itemize}
-\item Let $P$ be the number of players.
-\item Place all of the Normal track pieces facedown in a stack. Take the first $P$ of these tiles, flip them face up and use them to start the track piece market.
-\item Generate $P-1$ contracts and use them to start the Contract market.
-\end{itemize}
+
+Place all of the track tiles in a stack face down.
+
+Choose a player to be the start player.
+
+Players start the game with 0 points.
 
 \subsection{Turns}
 
 Each turn consists of the following phases.
 
-\subsubsection{Phase1 : Track Auction}
+\subsubsection{Phase 1 : New Track}
 
-Maximum bid wins. Each player must buy exactly 1 piece of track each turn. Naturally, players that have bought track pieces may not engage in any other auctions that turn. Players are prohibited from bidding more money than they have on hand.
+Reveal 1 track piece per player and set them in the middle of the table.
 
-At the end of the auction, lay 1 new random track piece in the track market for every player in the game.
+In order from the player with the least points to the player with the most points, players choose 1 piece of track and build it next to a tile in their yard.
 
-\subsubsection{Phase2 : Contract Auction}
+In the case of a tie in the number of points, the tie is broken in clock - wise order from the start player.
 
-Minimum bid wins the contract. Players may only have 1 contract active at a time and can only deactivate contracts by fullfilling them.
-Naturally, players with active contracts may not take part in the bidding of any new contracts.
+Track pieces in a yard must all be connected horizontally or vertically.
 
-Everytime a contract is purchased, generate a new contract and place it in the contract market.
+\subsubsection{Phase 2 : Bidding on a Train sorting contract.}
 
-\subsubsection{Phase3 : Rolling Stock Auction}
+Reveal 2 car cards and set them out in order in the middle of the table.
 
-Maximum bid wins. Players may buy as many or few pieces of rolling stock as they desire and can afford.
+Players bid on the number of moves they think they could use to proccess the train after the order of the cars has been randomly shuffled.
 
-At the end of the auction, generate $Y$ new pieces of rolling stock.
+Players may also request that an additional number of cars may be revealed from the deck and appended to the end of train and make a bid on the number of moves it would take them to properly shuffle the longer train.
 
-\subsubsection{Phase 3: Trading, selling, and Shunting}
+\subsubsection{Phase 3 : Determining the winner of the train.}
 
-Players may pay $X$ to shunt a set of cars with one end accessible by the source or sink. Players may move cars to each other's yards by moving the cars to the sink, as long as the players have agreed to a trade agreement involving the amount of money that will change hands as compensation for the action.
+Every player takes car pieces identical to the sub train that they bid on and line them up in order at the source of their yard.
 
-In a similar way, players may shunt cars to the sink to fullfill contracts that have won and collect money from the bank.
+The revealed set of car cards is shuffled together and then a permutation of the original train is revealed. If the lowest bidder for that length of train can successfully sort the original train into the generated permutation using no more than the number of moves that they bid, then they win all of the car cards.
 
-Players may trade 3 cars to the bank for 1 car of any color.
+If nobody was able to fullfill their bid, then the proccess is repeated with the cars consisting of the next smaller sub train that was bid on.
+
+If nobody fullfills their bid, then the cars are sent to a discard pile.
+
+Players keep their won car cards and these count as the player's points.
+
+\subsubsection{Phase 4: End of Turn.}
+
+The player with the fewest points receives the start player token. In the event of a tie, the person with the fewest points and closest clockwise from the previous start player is chosen. (In other words the start player is gurranteed to change in the event of a tie.)
+
+\subsection{Legal Moves}
+
+A set of connected cars may be moved as far as possible in one direction. Cars may be interpretted as coupled or uncoupled at the beginning of the move, but the interpretation cannot be changed until the next moves, in other words if you wish to move and connect cars, you will have to move the first train to the other train, then end the move. During your next move, you may interpret the cars as coupled into one train.
+
+To properly exit a train from the yard, every car must be coupled and be in the order specified by the random permuation.
 
 \subsection{End of Game and Winning}
-The game \textbf{ends} after 20 Turns have elapsed, which is when everyone will have a full yard with a piece of track in every square.
 
-The player with the most money \textbf{wins} the game. If two players are tied, then the player with the most cars in their yard wins.
+The game ends after 20 turns or when the car card deck is exhausted.
 
-
-\subsection{New Turns}
-
-\begin{itemize}
-\item Players begin with the default yard and a 5 car contract.
-\item Players take turns buying track pieces untill nobody wants one. Track pieces cost 1 coin.
-\item Players may receive a random car for 2 coins. Players may move cars for 1 coin.
-\item Players may make trades by spending coins to move their cars out of their yards and sending trains to other players.
-\item Players may sell train cars to the bank for 1 coin.
-\item Players may receive the first random car for free every turn.
-\item Players may not leave any cars on their track headings between turns.
-\item Players may satisfy contracts for 20 coins.
-\item The Game ends when a player has a full 20 pieces of track in their yard.
-\end{itemize}
-
-\subsection{New Turns}
-
-\begin{itemize}
-\item Build the yard at the beginning of the game.
-\item Buying cars.
-\item Cars may only be used to fullfill contracts and sold to other players, they may not be ditched.
-\end{itemize}
+The player wth the most number of car cards wins the game.
 
 %% Signals that the document has ended.
 \end{document}

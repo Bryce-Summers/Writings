@@ -712,23 +712,62 @@ The arithmetic intensity is now around $\frac{1}{2}$. If we desire a greater ari
 
 	\section{Overview}
 
-	In this Section we will discuss the mathematical definitions of various Abstract Data Types. For particular implementations of these Types, please see the part of this book discussing Data Structures.
+	In this Section we will discuss the mathematical definitions of various Abstract Data Types. For particular implementations of these Types, please see section \ref{Data Structures}, which discusses Data Structures.
 
 \section{Function}
 	\subsection{Interface}
+
+A function $f$ associates elements of type $K$ with elements of type $V$ and allows for the associated value to be looked up. Elements $K$ are said to be in the domain of $f$ and elements $V$ are said to be in the range of $f$. If a key is looked up that has no associated value, then an undefined state is returned.
+\begin{itemize}
+\item \texttt{void associate(K key, V value)}
+\item \texttt{V lookup(K key)}
+\end{itemize}
+
 	\subsection{Finite Functions}
+
+Finite functions provide a finite number of associations from the domain to the range. They require a finite number of associate operations to populate the association.
+
 	\subsection{Infinite Functions}
+
+Infinite functions ar those that provide an infinite number of associations from the domain to the range, such as functions that are defined on the entire range of infinite sets, such as the set of natural numbers. In order to implement an infinite function, it is necessary to specify a mathematical relationship between the inputs and the outputs. Many functions that programmers write are of this form.
+
 	\subsection{Real World Examples.}
+
+Many indexing and lookup systems are examples of functions, including the dewey decimal system used in libraries to help the patrons convert between the name and description of a book and the desired book itself.
+
 \section{Stack}
+
+Stacks allow people to store Elements and remove them such that the last element added to the stack will be the first element removed from the stack. (LIFO).
+
 	\subsection{Interface}
+\begin{itemize}
+\item \texttt{bool isEmpty()}
+\item \texttt{void push(E elem)}
+\item \texttt{E pop()}
+\end{itemize}
 	\subsection{Real World Examples.}
+
+Most one sided shopping cart storage areas work like a stack. Stacks of logs usually work like a stack in that the last log added to the stack will be on top and therefore the first one to be removed later.
+
 \section{Queue}
+
+Queues allow people to store Elements and remove them such that the fisrt element added to the queue will be the first element removed from the queue. (FIFO).
+
 	\subsection{Interface}
+\begin{itemize}
+\item \texttt{bool isEmpty()}
+\item \texttt{void enqueue(E elem)}
+\item \texttt{E dequeue()}
+\end{itemize}
+
 	\subsection{Real World Examples.}
-\section{Deque}
-	\subsection{Interface}
-	\subsection{Real World Examples.}
-\section{Priority Queue}
+
+The lines at a super market usually function like a queue. Toaster ovens with conveyor belts function like a queue in that the first piece of bread that is toasted is the first one that will be done.
+
+\section{Deque}.
+	\subsection{Interface}.
+	\subsection{Real World Examples.}.
+\section{Priority Queue}.
 	\subsection{Interface}
 	\subsection{Real World Examples.}
 \section{Set}
@@ -750,7 +789,7 @@ The arithmetic intensity is now around $\frac{1}{2}$. If we desire a greater ari
 	\subsection{Heaps}
 	\subsection{Tree Transversals} \label{Tree Transversals}
 
-\chapter{Data Structures}
+\chapter{Data Structures} \label{Data Structures}
 
 \section[Overview]{Overview}
 
