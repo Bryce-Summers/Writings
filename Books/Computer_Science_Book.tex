@@ -766,6 +766,17 @@ The lines at a super market usually function like a queue. Toaster ovens with co
 
 \section{Deque}.
 	\subsection{Interface}.
+
+\begin{itemize}
+\item \texttt{void add\_front(E elem)}
+\item \texttt{void add\_back(E elem)}
+\item \texttt{E  remove\_front()}
+\item \texttt{E  remove\_back()}
+\item \texttt{E  peek\_front()}
+\item \texttt{E  peek\_back()}
+\item \texttt{bool isEmpty()}
+\end{itemize}
+
 	\subsection{Real World Examples.}.
 \section{Priority Queue}.
 	\subsection{Interface}
@@ -788,6 +799,17 @@ The lines at a super market usually function like a queue. Toaster ovens with co
 	\subsection{Balanced Binary Search Trees.}
 	\subsection{Heaps}
 	\subsection{Tree Transversals} \label{Tree Transversals}
+
+\section{Predicates}
+Predicates are any function  that returns true for some set of inputs and false for others. Predicates are used to classify elements into those that satisfy the predicate's property and those that do not.
+Consider the \textit{even} predicate that returns true iff a given element is a number and it is even. It could be implemented as follows:
+\begin{verbatim}
+bool even(Number n)
+   return n mod 2 == 0;
+\end{verbatim}
+
+The Interface for predicates is just a function specification \texttt{E -> bool}.
+
 
 \chapter{Data Structures} \label{Data Structures}
 
@@ -870,7 +892,24 @@ Throughout this part of the book, we will be developing many of the standard dat
 
 	\section{Collection Searches}
 		\subsection{Linear Search} \label{linear search}
+
+\begin{verbatim}
+// INPUT : An enumeratable collection and a predicate P.
+// OUTPUT : The first element in the collection that satisfies P.
+for Element e in a Collection
+   if (P(e)) then (return e)
+return NONE
+\end{verbatim}
+
 		\subsection{Binary Search} \label{binary search}
+
+	\section{Numerical Binary Search Based Algorithms}
+
+	\subsection{Square Root}
+
+	\subsection{Finding a root of a continuous function}
+
+	\subsection{Finding Real Roots of a Polynomial}
 
 	\section{Graph Searches}
 		\subsection{BFS}
