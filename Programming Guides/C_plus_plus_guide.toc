@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Overview}{3}{section.1}
+\contentsline {section}{\numberline {2}Class Structure}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Example Header File (.h)}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Example Implementation File (.cpp)}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Constructor}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Destructor}{5}{subsection.2.4}
+\contentsline {section}{\numberline {3}Memory Management}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Malloc / Free}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}new / delete}{6}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Stack Based (Static) Allocation}{6}{subsection.3.3}
+\contentsline {section}{\numberline {4}Inheritance}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Base Classes}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Derived / Child Classes}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Virtual Methods}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Pure Virtual Methods}{7}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Overriding}{8}{subsection.4.5}
+\contentsline {section}{\numberline {5}Data passing by value, pointer, and reference}{8}{section.5}
+\contentsline {section}{\numberline {6}Compilation Quirks and Debugging Hints}{8}{section.6}
+\contentsline {section}{\numberline {7}Name Spaces}{9}{section.7}
+\contentsline {section}{\numberline {8}Data Structures and Operators}{10}{section.8}
+\contentsline {subsection}{\numberline {8.1}Standard Data Structures}{10}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Operators}{10}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Comparators}{10}{subsubsection.8.2.1}
+\contentsline {subsubsection}{\numberline {8.2.2}HashValues}{10}{subsubsection.8.2.2}
+\contentsline {subsection}{\numberline {8.3}Iterators}{11}{subsection.8.3}
+\contentsline {section}{\numberline {9}Useful Stuff}{11}{section.9}
+\contentsline {subsection}{\numberline {9.1}Math}{11}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}IO and Printing.}{11}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Custom Runtime Errors}{11}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Templates (And Genarics)}{11}{subsection.9.4}
+\contentsline {section}{\numberline {10}NULL}{12}{section.10}

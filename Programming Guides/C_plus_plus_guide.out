@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.1}{Overview}{}% 1
+\BOOKMARK [1][-]{section.2}{Class Structure}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Example Header File \(.h\)}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Example Implementation File \(.cpp\)}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Constructor}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Destructor}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Memory Management}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Malloc / Free}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{new / delete}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Stack Based \(Static\) Allocation}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Inheritance}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Base Classes}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Derived / Child Classes}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Virtual Methods}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.4}{Pure Virtual Methods}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.5}{Overriding}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Data passing by value, pointer, and reference}{}% 17
+\BOOKMARK [1][-]{section.6}{Compilation Quirks and Debugging Hints}{}% 18
+\BOOKMARK [1][-]{section.7}{Name Spaces}{}% 19
+\BOOKMARK [1][-]{section.8}{Data Structures and Operators}{}% 20
+\BOOKMARK [2][-]{subsection.8.1}{Standard Data Structures}{section.8}% 21
+\BOOKMARK [2][-]{subsection.8.2}{Operators}{section.8}% 22
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Comparators}{subsection.8.2}% 23
+\BOOKMARK [3][-]{subsubsection.8.2.2}{HashValues}{subsection.8.2}% 24
+\BOOKMARK [2][-]{subsection.8.3}{Iterators}{section.8}% 25
+\BOOKMARK [1][-]{section.9}{Useful Stuff}{}% 26
+\BOOKMARK [2][-]{subsection.9.1}{Math}{section.9}% 27
+\BOOKMARK [2][-]{subsection.9.2}{IO and Printing.}{section.9}% 28
+\BOOKMARK [2][-]{subsection.9.3}{Custom Runtime Errors}{section.9}% 29
+\BOOKMARK [2][-]{subsection.9.4}{Templates \(And Genarics\)}{section.9}% 30
+\BOOKMARK [1][-]{section.10}{NULL}{}% 31
