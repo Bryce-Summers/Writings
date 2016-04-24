@@ -51,7 +51,7 @@
 
 \chapter{Mathematical Objects}
 
-To fully appreciate the material covered in this book, it is important that you are familiar with many mathematical objects, including sets, functions, orderings, numbers, relations, graphs, trees. At the present time, most purely mathematical material will not be explicity developed withing this book. The Author may write material regarding these subjects that will eventually be found at BryceSummers.com
+To fully appreciate the material covered in this book, it is important that you are familiar with many mathematical objects, including sets, functions, orderings, numbers, relations, graphs, trees. At the present time, most purely mathematical material will not be explicity developed within this book. The Author may write material regarding these subjects that will eventually be found at BryceSummers.com
 
 \chapter[Fundamental Distinctions]{Description, Interface, Implementation, and Analysis}
 
@@ -117,7 +117,7 @@ To conclude this chapter, we will properly investigate how these distinctions ca
 
 	\subsection{Analysis}
 
-	To Analyze whether the husband makes an appropiate dinner in an appropiate manner would require us to look at the expectations of the wife and see if they are met by the husband's performance of the action, and in general by proving that the husband will always prepare the meal appropiatly given his internal descision procedures. In the real world, humans are not very likely to err at points in their lives, so it may be appropriate to only determine whether a paricular instance of the husband performing the action is correct or we could make statements about the probability of the husband succeeding at the action.
+	To Analyze whether the husband makes an appropiate dinner in an appropiate manner would require us to look at the expectations of the wife and see if they are met by the husband's performance of the action, and in general by proving that the husband will always prepare the meal appropiatly given his internal descision procedures. In the real world, humans are very likely to err at points in their lives, so it may be appropriate to only determine whether a paricular instance of the husband performing the action is correct or we could make statements about the probability of the husband succeeding at the action.
 
 
 \chapter{Memory, Data, and Interpretation} \label{memory}
@@ -160,7 +160,7 @@ $2^{7}$ & $2^{6}$ & $2^{5}$ & $2^{4}$    & $2^{3}$   & $2^{2}$  & $2^{1}$ & $2^{
 \end{table}
 
 \section{2's Complement}
-Negative numbers are represented by mapping half of the possible states of a primitive number of size $N$ to negative numbers between -1 and $2^{N-2}$ inclusive. The particulars of this mapping are up to the implementation, but a popular mapping is what is known as 2's complement arithemetic, where the numbers are represented such that when any two numbers are interpreted as positive numbers, added together, and then remapped to appropiate positive or negative numbers, then the result is correct modulo $2^{N}$. One way to convert from a positive number to its negation is by flipping, i.e. changing the state, of every bit and then incrementing the number by 1 using base 2 arithemetic. Please see Figure \ref{figure:2scomplement} for an example of the conversion of 100 to -100. Of particular note, please see that $100 + (-100)$ overflows to 0!
+Negative numbers are represented by mapping half of the possible states of a primitive number of size $N$ to negative numbers between -1 and $2^{N-2}$ inclusive. The particulars of this mapping are up to the implementation, but a popular mapping is what is known as 2's complement arithemetic, where the numbers are represented such that when any two numbers are interpreted as positive numbers, added together, and then remapped to appropriate positive or negative numbers, then the result is correct modulo $2^{N}$. One way to convert from a positive number to its negation is by flipping, i.e. changing the state, of every bit and then incrementing the number by 1 using base 2 arithemetic. Please see Figure \ref{figure:2scomplement} for an example of the conversion of 100 to -100. Of particular note, please see that $100 + (-100)$ overflows to 0.
 
 \begin{table}[h]
 \centering
@@ -176,7 +176,7 @@ $\sim 100$ & 1 & 0 & 0 & 1 & 1 & 0 & 1& 1 \\ \cline{2-9}
 
 	\section{Booleans}
 
-	Booleans are a primitive type supported by many programming languages that can take on 2 states, \textit{true} and \textit{false}. They are like bits, except for memory alignment reosons are usually implemented as byte sized or greater sections of memory that are restricted to only take on 2 states. It may be more memory and time efficient to use the boolean operations on larger types such as integers when trying to represent arrays of booleans in software, such as when using bit sets. Booleans are used to represent the results of any question or function that returns yes or no answers.
+	Booleans are a primitive type supported by many programming languages that can take on 2 states, \textit{true} and \textit{false}. They are like bits, except for memory alignment reosons they are usually implemented as byte sized or greater sections of memory that are restricted to only take on 2 states. It may be more memory and time efficient to use the boolean operations on larger types such as integers when trying to represent arrays of booleans in software, such as when using bit sets. Booleans are used to represent the results of any question or function that returns yes or no answers.
 
 	\section{Pointers}
 
@@ -186,7 +186,7 @@ FIXME : Put in a simple diagram with an 4 bit computer.
 
 	\section{Structures}
 
-	Structures are types formed by placing several different types in a predetermined sequence. For instance I might make a structure containing 3 chars to represent a person's three main initials or a structure containing a pointer to a structure that represents a university and an integer representing the current school year. Structures will be very important to packaging data types into useful forms and allow for the creation of metaphors that ease the cognitive load on the programmer. Structures are called objects in the paradigm of object oriented programming.
+	Structures are types formed by placing several different types in a predetermined sequence contiguously in memory. For instance I might make a structure containing 3 chars to represent a person's three main initials or a structure containing a pointer to a structure that represents a university and an integer representing the current school year. Structures will be very important to packaging data types into useful forms and allow for the creation of metaphors that ease the cognitive load on the programmer. Structures are called objects in the paradigm of object oriented programming.
 
 	\section{Pairs}
 
