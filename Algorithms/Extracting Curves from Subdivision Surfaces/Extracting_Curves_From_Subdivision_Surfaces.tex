@@ -191,7 +191,7 @@ invariant in their support of me through my non euclidean transformations. They 
 
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{StylizedFigure}
+	\includegraphics[width=0.5\textwidth]{StylizedFigure}
 	\caption{A 3D geometric image created with proper aesthetic design. To create this image, a system would need to model the saddle geometry along
 	with its smooth boundary, compute tangents and curvatures,
 	extract minimum and maximum curvature curves to defined the local coordinate system, extract smooth silhouette curves, segment curves based on occlusion,
@@ -234,7 +234,7 @@ invariant in their support of me through my non euclidean transformations. They 
 			which segments the model into regions with similar monotonic functional behavior.
 \end{itemize}
 
-	\subsection{Previous Extraction Methods}
+	\subsection{Prior Extraction Methods}
 
 	\paragraph{2D Curve Extraction Methods.}
 
@@ -245,15 +245,34 @@ invariant in their support of me through my non euclidean transformations. They 
 	
 	\paragraph{3D Curve Extraction Methods.}
 
-	Stroila et. al. were able to extract silhouette, shadow, gleam, and other curves via particle chain systems. They have also studied practical ways to utilize these curves
-	for illustration by describing how to sort, orient, identify, and fill them as closed regions. \cite{SEH08} // FIXME: Should I rephrase this, because 
-	I am pretty much parroting the abstract of this paper.
-
+	Stroila et. al. were able to extract silhouette, shadow, gleam, and other curves via particle systems. They have also studied practical ways to utilize these curves
+	for illustration by describing how to sort, orient, identify, and fill them as closed regions. \cite{SEH08}
+	Their methods mainly rely on the intersections of implicit surfaces and produce high quality curves, but it would be difficult and computationally
+	inefficient to fit a particle system to complicated arbitrarily define surfaces, such as Catmull-Clark subdivision surfaces.
+	
 	\subsection{Catmull-Clark Subdivision Surfaces}
+
+		Catmull-Clark subdivison surfaces are a very popular subdivision method for quarilateral meshes, that produces $\mathcal{C}^{1}$ continuous limit surfaces.
+		
+		Please see Figure: \ref{fig:Catmull-Clark} for an example series of Catmull-Clark subdivision steps on a cube mesh.
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.3\textwidth]{cc0}
+		\includegraphics[width=0.3\textwidth]{cc1}
+		\includegraphics[width=0.3\textwidth]{cc2}
+		\includegraphics[width=0.3\textwidth]{cc3}
+		\includegraphics[width=0.3\textwidth]{cc4}
+		\includegraphics[width=0.3\textwidth]{cc_loop_shaeffer}
+		\caption{A cube mesh is shown along with 4 subdivision steps using the Catmull-Clark subdivision algorithm. The steps proceed from left to right, top to bottom.
+				The bottom right figure shows the Loop-Schaeffer geometry patch approximation of the Catmull-Clark limit surface.}
+		\label{fig:Catmull-Clark}
+		\end{figure}
+
 	
 	// FIXME : I need to define what Catmull-Clark Subdivision Surfaces are.
 
-		Naively we could directly evaluate these curves over the linear patches defined on standard polyhedral 3D models,
+		Naively we could directly evaluate curves over the linear patches defined on standard polyhedral 3D models,
 		but much like the results found in \cite{Eisemann08},
 		such lines would jitter back and forth over boundaries and would not converge to smooth natural and correct looking curves even after substantial
 		subdivision of the surface. See Figure \ref{fig:Eisemann_linear_patches} for example of Eisemann et Al's attempt to extract silhouette
@@ -272,7 +291,7 @@ invariant in their support of me through my non euclidean transformations. They 
 		\centering
 		\includegraphics[width=0.3\textwidth]{fish_cm}
 		\includegraphics[width=0.3\textwidth]{fish_cm_and_patch}
-		\includegraphics[width=0.275\textwidth]{fish_patch}
+		\includegraphics[width=0.3\textwidth]{fish_patch}
 		\caption{A model of a fish represented from on the left by its control mesh and on the right by a geometry patch approximation of its Catmull-Clark limit surface.}
 		\label{fig:subDDef}
 		\end{figure}
