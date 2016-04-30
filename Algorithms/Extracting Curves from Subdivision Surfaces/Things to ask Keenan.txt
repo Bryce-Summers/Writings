@@ -3,3 +3,21 @@ I should ask what he thinks of my choice of illustrative images. Are some of the
 
 
 Should I define Extraordinary Vertices?
+
+
+Here is a list of illustrations I would like to create to make my points clearer.
+
+
+1. A diagram of local coordinates on a patch.
+2. Diagram the bezier basis curves.
+3. Make a nice diagram of the definition of the visibility function. With a nice eye vector and tangent vector on the plane.
+
+// FIXME: Should I call 'slid
+
+Make an illustration of projecting 3D curves onto a view plane.
+
+Tommorrow:
+Discuss the algorithms for finding the critical points of the visibility function.
+Write the discussion of Curve Projection.
+
+Proofread the document.
