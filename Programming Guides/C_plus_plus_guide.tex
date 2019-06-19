@@ -1,545 +1,1 @@
-\documentclass[12pt, letterpaper]{article}
-
-\usepackage{color} %% Allows text to be typeset in color.
-
-%% These allow Me to add Images to the Book.
-\usepackage{graphicx}
-\graphicspath{ {images/} }
-
-%% Enables hyperlinks.
-\usepackage{hyperref}
-
-%% Makes BigO easier.
-\newcommand{\bigO}{\mathcal{O}}
-\newcommand{\bigOmega}{\Omega}
-\newcommand{\bigTheta}{\Theta}
-
-%%
-\oddsidemargin0cm
-\evensidemargin0cm
-\topmargin-2cm     % These lines increase the amount of usable space and save trees.
-\textwidth16.5cm
-\textheight23.5cm  
-
-%%\setcounter{tocdepth}{4} %% set the table of contents detail depth.
-
-%% Types of organizational sections.s
-%%\part{}
-%%\chapter{}
-%%\section{}
-%%\subsection{}
-%%\subsubsection{}
-%%\paragraph{}
-%%\subparagraph{}
-
-\begin{document}
-
-\title{\color{blue}C++ Programming Guide}
-\author{Written by Bryce Summers \texttt(BryceSummers.com)}
-\date{\color{red}Last Updated: \today}
-\maketitle
-
-\tableofcontents 
-
-\newpage
-
-\section{Overview}
-
-This work of nonfiction has been written for those who have some experience with languages with C like syntax and would like a guide to some of the foundational features of the C++ language that a programmer might expect. I have taken the liberty of collecting some bits of information together as a convenience to others. Rather than being comprhensive, this guide presents a highlight reel of C++ features that the author thinks are important.
-
-\section{Class Structure}
-
-C++ allows a programmer to frolic in the joyful experience that is object oriented programming. I have decided to begin this document by talking about the basic structure of classes and present an example class that will be used in later chapters.
-
-\subsection{Example Header File (.h)} \label{Example1}
-
-\begin{verbatim}
-/* Filename: Example.h */
-#pragma once // Only include this header file once!
-
-class Example
-{
-    public: // Data and methods accessible from anywhere in the program.
-
-        // input is -45 by default if no argument is given.
-       	Example(int number_in = -45); // Constructor.
-        virtual ~Example();           // Destructor.
-
-        int  getNumber(); // Notice the semicolon!
-        void setNumber(int n);
-
-    protected: // Same as protected, but also accessible from child (derived) classes.
-
-        virtual int getChildNumber(); // Virtual Method. '=0' for pure virtual.
-
-    private: // DEFAULT, accessible only from a particular instance of this class.
-
-        int number; // Private variable.
-};
-
-class subClass : public Example // inheritance.
-{
-  ... // Constructor and Destructor not shown.
-  virtual int getChildNumber();
-  private: int childNumber;
-}
-\end{verbatim}
-
-\newpage
-
-\subsection{Example Implementation File (.cpp)}
-
-\begin{verbatim}
-/* Filename: Example.cpp */
-#include "Example.h"
-
-Example::Example(int n) // Constructor.
-{
-  number = number_in;
-}
-
-Example::~Example() // Destructor.
-{
-  // Free / Delete any memory here.
-}
-
-int Example::getNumber() // Public Method.
-{
-  return getChildNumber() + number; // number = this -> number.
-}
-
-void Example::setNumber(int n)
-{
-  number = n;
-}
-
-int Example::getChildNumber()
-{
-  return 0;
-}
-
-int subClass::getChildNumber()
-{
-  return childNumber;
-}
-
-\end{verbatim}
-
-\newpage
-
-\subsection{Constructor}
-
-Constructors specify what the initial settings for all of a classes data fields will be. Constructors may take arguments just like functions. Constructors may be implemented in the header file or an associatted implementation file. Constructors are called automatically when an object is first instantiated.
-
-\begin{verbatim}
-Example(int n); // Declaration in Header, implementation in .cpp file.
-Example(int n){number = n;}; // Implementation in header.
-\end{verbatim}
-
-\subsection{Destructor}
-The destructors are called when a stack allocated class goes out of scope or when a delete or free operation is performed.
-\begin{verbatim}
-virtual ~Example(); // Destructors are always virtual and have a tilde.
-\end{verbatim}
-
-For more about the memory management and how it relates to constructors and destructors, please see Section \ref{MemManage}.
-
-\section{Memory Management} \label{MemManage}
-
-Like C and unlike Java and many newer languages, C++ requires the programmer to partake in manual memory management. This means that the programmer is responsible for freeing memory resources once they are finished. I will discuss 3 different pairs of memory allocation and deallocation procedures in this section. Programmers can also use some features of C++ such as stack based memory allocation, smart pointers, and passing by pointer/reference to manage memory implicitly, therebye handing off the job of freeing themselves of the responsibility of explicitly calling free or delete functions.
-
-\subsection{Malloc / Free}
-
-Mallocs and frees have been inherited into the C++ language from good old fashion C.
-\begin{verbatim}
-int * array = malloc(1000*sizeof(int));
-...
-free(array);
-\end{verbatim}
-
-They are used to allocated explicit regions of memory and free them. All memory allocated in this manner will be stored in the heap, so data that has been malloced will be safe as long until free is called. This makes it useful for allocating data that needs to survive outside of the function or class that has allocated it. I would reccomend only using malloc and free for traditional structures such as arrays of data or primitive structures, but to use new and delete when allocating and deallocating classes.
-
-\subsection{new / delete}
-The new and delete operators work like mallocs and frees, but are more user friendly for allocating space for instances of a given class.
-
-\begin{verbatim}
-Example * ex = new Example(5);
-...
-delete ex;
-\end{verbatim}
-
-\subsection{Stack Based (Static) Allocation}
-
-Entire classes can be allocated on the stack, just like primitives such as ints, chars, and floats! As long as you are careful to not pass classes that are gigantic around by value, allocating on the stack will make your life easier. Stack based allocation allows you to not need to worry about explicitly freeing the memory and the allocation itself should be faster than dynamic memory allocation.
-
-\begin{verbatim}
-void foo(){
-Example ex; // instantiates the default constructor with the default value (-45 in this case).
-//Example ex = Example(5);
-...
-// deconstructor is called on 'ex' and 'ex' memory is deallocated.
-}
-\end{verbatim}
-
-Please note that classes themselves can have statically allocated members, provided there is not an infinite descent loop.
-\begin{verbatim}
-class smallstruct
-{
-  int val;
-  float val2;
-}
-class largestruct
-{
-  smallstruct ss1; // Static allocation.
-  int val;
-  smallstruct ss2; // Static allocation.
-}
-int main()
-{
-  largestruct struc; // Static allocation.
-  ... // All memory survives until 'struc' is out of scope.
-}
-\end{verbatim}
-
-\newpage
-
-\section{Inheritance}
-
-Inheritance can be used to create derived classes that each share some core functionality with the base class, but provide some unique functionality that reflects there own individuality.\\
-
-The syntax for denoting that a class inherits a base class is as follows as in the example code:
-
-\begin{verbatim}
-class subClass : public Example // inheritance.
-\end{verbatim}
-
-An example of when inheritance is useful is when writing a raytracer for different types of geometry, which each have their onw ray intersection specification.
-
-\subsection{Base Classes / Parent Classes}
-
-Base classes are the general parent class that provide core functionality that may be useful to a number of children with more specific interests.
-
-\subsection{Derived / Child Classes}
-
-Child classes, also known as derived classes, inherit all of the general functionality from a parent, but then extend the core functionality with custom methods that are more specific to the child.
-
-\subsection{Virtual Methods}
-
-The C++ \texttt{virtual} keyword may be used to label functions as virtual. Virtual methods are those in a parent that provide an implementation, but which may be overridden by a custom implementation in individual child classes.
-
-\subsection{Pure Virtual Methods}
-
-Pure virtual methods are those that are virtual, but that do not provide an implementation in the base class. These are differentiated from linking errors and missing implementations that are mistakes of the programmer by writing '=0' after the declaration in the header file.
-
-\begin{verbatim}
-virtual int foo() = 0; // '=0' makes it pure, instead of a compile error.
-\end{verbatim}
-
-Classes with pure virtual functions may not be instantiated, instead the programmer would instantiate child classes that provide implementations for the missing methods. Like normal virtual methods, a base class may make calls to pure virtual methods and the implementation will be filled in by whichever child class a programmer has instantiated. This makes it easy to deal with algorithms that require a large number of particular cases of a general problem, such as the ray geometry intersection test used in Computer Graphics Applications.
-
-\subsection{Overriding}
-
-A method in a child class is said to \textit{override} a method in a base class if it has the same name as a virtual method in the base class. The child class's implementation of the method will be used in liu of the parent method's implementation. 
-
-In the example in Section \ref{Example1}, the \texttt{subClass} class overrides the \texttt{getChildNumber} method.
-
-If the \texttt{subClass} class wanted to make a call to the parent's \texttt{getChildNumber} method, then it would do so as follows:
-\begin{verbatim}
-int val = Example::getChildNumber(); // calls base class' function
-\end{verbatim}
-
-\section{Data passing by value, pointer, and reference}
-
-Passing by value makes a stack allocated copy. Passing by pointer or reference passes the original memory location.
-
-\begin{verbatim}
-// -- Function Declaration and Implementation.
-int add1(int n)    // Value.
-{
-  n++;
-  return n;
-}
-int add2(int * n); // Pointer.
-{
-  (*n)++;
-  return *n;
-}
-int add3(int & n) // Reference.
-{
-  n++;
-  return n;
-}
-
-// -- Function Calling.
-int n = 0;
-int q;
-q = foo1( n);// n --> n.     q = n + 1.
-q = foo2(&n);// n --> n + 1. q = n + 1.
-q = foo3( n);// n --> n + 1. q = n + 1.
-\end{verbatim}
-
-\newpage
-
-\section{Compilation Quirks and Debugging Hints}
-
-Always, always, always, write return statements for functions that have a return type. The compiler will not complain if you forget a return statement and will return whatever junk data was in the return register. This may cause your program to have a mysterious segfault between function calls.\\
-
-The compiler will not fully build portions of your code untill there is an execution path from the main function that could possibly call that portion of code. Therefore if you want to see if your code is compiling correctly, then you should integrate it into an actual program, such as a testing harnass.
-
-\section{Name Spaces}
-
-To prevent naming collisions, C++ organizes names into different namespaces. For instance we could define two classes called example, but put them into different namespaces and they would not interfere with each other.\\
-
-The namespace for most of the built in classes, such as the data structures is \texttt{std}.\\
-
-To define a namespace for a block of code, for instance with a class declaration, enclose the code with a name space block as follows:
-\begin{verbatim}
-namespace exampleNameSpace
-{
-  class Example
-  {
-    ...
-  }
-}
-\end{verbatim}
-
-To reference the example class you can write one of the following:
-
-\begin{verbatim}
-int main()
-{
-  exampleNameSpace::Example ex;
-  ...
-}
-\end{verbatim}
-
-OR
-
-\begin{verbatim}
-using namespace exampleNameSpace; // This could be seen as name pollution.
-int main()
-{
-  Example ex;
-  ...
-}
-\end{verbatim}
-
-If there are name collisions, the compiler will probably yell at you.
-
-\section{Data Structures and Operators}
-
-\subsection{Standard Data Structures}
-
-C++ has a standard template library that includes many useful data structures.
-
-\href{http://www.cplusplus.com/reference/stl/}{Reference: http://www.cplusplus.com/reference/stl/}
-
-\begin{verbatim}
-#include <vector>
-#include <set>
-#include <map>
-#include <list>
-
-std::vector<int> v;   // Unbounded Array.
-std::set<int> s;      // Binary Search Tree or Set.
-std::map<int, int> m; // Associative Array.
-std::list<int> l;     // Linked List.
-\end{verbatim}
-
-\subsection{Operators}
-
-Operators can be defined in at least 3 different ways. One way is to make a local comparator using a struct. The second way is to define a global comparision function for two object of the same type inside of the std namespace. The third way is to define the standard operators from within a class.
-
-Please see the following code for an example of an Edge class that overrides the standard operators inside of the class and defines a global hash value in the std namespace for Edge objects.
-\href{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs/blob/master/Mazes/include/Edge.h}{Here is an example of a class that defines both comparators and hash value in the standard namespace.} 
-\url{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs/blob/master/Mazes/include/Edge.h} 
-
-I am mainly discussing operators to inform you of the basic approaches that C++ programmers should use to define operators for use with data structures, but I cannot gurantee that this section will completely enlighten you to the nitty gritty details of how to do so in any case.
-
-\subsubsection{Comparators}
-
-Here is how to create a custom comparator for use with a map or set.
-
-\begin{verbatim}
-// Used to impose an ordering for the tuples in the bst.
-struct ExampleCompare
-{
-    // Returns true if e1 < e2.
-    bool operator()(const Example * e1, const Example * e2) const
-    {
-      return e1.getNumber < e2.getNumber();
-    }
-};
-\end{verbatim}
-
-We only need to specify a less than operator for sets, because C++ can derive all other comparison values from it like as follows:
-\begin{verbatim}
-Example * a;
-Example * b;
-a = b --> !((a < b) || (b < a))
-a > b --> (b < a)
-\end{verbatim}
-
-
-\subsubsection{HashValues}
-
-Here is how to specify a global hash value for a given type. You can do this for pointer types, reference types, etc.
-
-\begin{verbatim}
-namespace std
-{
-  template <>
-  struct hash<Example *>
-  {
-    size_t operator()(const Example * e) const
-    {
-      // Return hash value.
-     ...
-    }
-}
-\end{verbatim}
-
-\subsubsection{$<<$ operator} \label{stream_operator}.
-
-The $<<$ operator is used as the 'To String' operator and is used with std::cout. We can define this operator as a convenient way of making it play nicely with the text printing pipeline. The $<<$ operator is automatically defined for all standard primitive types. You can likewise define this operator for your own types.
-\\
-Please see section \ref{printing} for an example of printing using the $<<$ streaming operator.
-
-\newpage
-\subsection{Iterators}
-
-Iterators can be used to iterate over a data structure and for various operations therein such as element deletion.
-
-Assume we have an iterable C++ collection such as a std::vector or any other standard C++ data structure. Let us call it $C$.
-C.begin() will return an iterator to the first element in the structur, and is in this sense inclusive. C.end() returns a vector to the end of the data structure, which is slightly past the last element. In this sense end() is exclusive.
-
-We can move the iterator to the next or in some cases the previous element through the incrementation operator \texttt{++}
-
-We can reach the elements pointed by an iterator by dereferencing the iterator.\\
-
-Here is a complete example of iterating over a std::vector of a custom type Edge.
-
-\begin{verbatim}
-std::vector<Edge> edge_vector = edges->edges;
-
-// iter is of type std::vector<Edge>::iterator
-// 'auto' automatically infers the type.
-for(auto iter = edge_vector.begin(); iter != edge_vector.end(); ++iter)
-{
-  Edge edge = *iter;
-
-  // do something for every edge.
-}
-\end{verbatim}
-
-You could also iterate over the edge vector as follows:
-
-\begin{verbatim}
-for ( auto &edge : edge_vector) {
-  std::cout << edge << std::endl;
-}
-\end{verbatim}
-
-\newpage
-\section{Useful Stuff}
-
-\subsection{Math}
-
-Math.h can be imported to provide many standard mathematics functions that most programmers would expect to see in any standardized language.
-
-Here is an example of using the math package to compute a cosine operation.
-
-\begin{verbatim}
-#include <math.h>
-...
-double input = 0.0;
-double output = cos(input);
-// output is around 1.0;
-\end{verbatim}
-
-For more information about all of the mathematics functions availible, please see: \\
-\href{http://www.cplusplus.com/reference/cmath/}{http://www.cplusplus.com/reference/cmath/}
-
-
-
-\subsection{IO and Printing.} \label{printing}
-
-Use the iostream package for input and output operations, such as printing using the $<<$ operator. For more on the $<<$ operator, please refer to section \ref{stream_operator}.
-
-\begin{verbatim}
-#include <iostream> 
-
-int main()
-{
-  int variable = 0;
-  std::cout << "My Variable's value is " << variable << " right now." << std::endl;
-}
-\end{verbatim}
-
-Here is an example of using the traditional printf function to print a variable.
-
-\begin{verbatim}
-#include <stdio.h>
-
-int main()
-{
-   int variable = 1;
-   printf ("My integer is \%d right now.\n", variable);
-}
-\end{verbatim}
-
-Please note than in each of these examples, the variable printing terminates with a new line character. If you do not print a new line character, then the text is not guranteed to be flushed to the console or other location that it is being sent to.\\
-
-For more information on printf, please see:
-\href{http://www.cplusplus.com/reference/cstdio/printf/}{http://www.cplusplus.com/reference/cstdio/printf/}\\
-
-Please see the following website for an example of forming C++ strings and concatenating them:
-\href{http://www.cplusplus.com/reference/string/string/operator+/}{http://www.cplusplus.com/reference/string/string/operator+/}
-
-\subsection{Simple Custom Runtime Errors}
-
-If you just want to terminate the program when it enters a certain state with a descriptive termination message, then you could do the following:
-
-\begin{verbatim}
-#include <stdexcept>
-
-void myError()
-{
-  throw std::runtime_error("ASSERTION FAILED");
-}
-
-\end{verbatim}
-
-\subsection{Templates (And Genarics)}
-
-Templates are used to define types that may be specified in terms of other types. Say you wanted to write an array, you could use templates to make it so one array implementation serves as a template for arrays of shoes, arrays of socks, or any other type of array. The logic of the array does not change, but arbitrary types may be defined for different arrays.
-
-\subsubsection{Using Templates}
-
-To use templated objects, put the desired element type in $<>$ brackets.
-
-Here is how to statically allocate a vector of vectors of integers:
-
-\begin{verbatim}
-std::vector<std::vector<int> > list;}
-\end{verbatim}
-Please note that there must be a space between the brackets, or else C++ assumes you mean the $>>$ operator instead of enclosing a parameterization.
-
-\subsubsection{Writing you own templates}
-Template specifications must be implemented inside of the header file if your want them to be portable.
-
-Here is an example of a simple data structure class that allows for genaric types (that satisfy standard comparison operators).
-\href{https://github.com/Bryce-Summers/CppCode/blob/master/CppCodeBase/include/LeftistHeap.h}{https://github.com/Bryce-Summers/CppCode/blob/master/CppCodeBase/include/LeftistHeap.h}
-
-\section{NULL pointers}
-
-NULL is a macro for a memory address representing the address of pointers that have no determined location. You may need do some importing before NULL is defined on your system.
-
-\section{Pairs}
-Here is a great example of constructing and reading pairs:\\
-
-\href{http://www.cplusplus.com/reference/utility/pair/pair/}{http://www.cplusplus.com/reference/utility/pair/pair/}\\
-
-The comparison value for pairs is determined by the comparison value of its two genaric element types.
-
-\end{document}
+\documentclass[12pt, letterpaper]{article}\usepackage{color} %% Allows text to be typeset in color.%% These allow Me to add Images to the Book.\usepackage{graphicx}\graphicspath{ {images/} }%% Enables hyperlinks.\usepackage{hyperref}%% Makes BigO easier.\newcommand{\bigO}{\mathcal{O}}\newcommand{\bigOmega}{\Omega}\newcommand{\bigTheta}{\Theta}%%\oddsidemargin0cm\evensidemargin0cm\topmargin-2cm     % These lines increase the amount of usable space and save trees.\textwidth16.5cm\textheight23.5cm  %%\setcounter{tocdepth}{4} %% set the table of contents detail depth.%% Types of organizational sections.s%%\part{}%%\chapter{}%%\section{}%%\subsection{}%%\subsubsection{}%%\paragraph{}%%\subparagraph{}\begin{document}\title{\color{blue}C++ Programming Guide}\author{Written by Bryce Summers \texttt(BryceSummers.com)}\date{\color{red}Last Updated: \today}\maketitle\tableofcontents \newpage\section{Overview}This work of nonfiction has been written for those who have some experience with languages with C like syntax and would like a guide to some of the foundational features of the C++ language that a programmer might expect. I have taken the liberty of collecting some bits of information together as a convenience to others. Rather than being comprehensive, this guide presents a highlight reel of C++ features that the author thinks are important.\section{Class Structure}C++ allows a programmer to frolic in the joyful experience that is object oriented programming. I have decided to begin this document by talking about the basic structure of classes and present an example class that will be used in later chapters.\subsection{Example Header File (.h)} \label{Example1}\begin{verbatim}/* Filename: Example.h */#pragma once // Only include this header file once!class Example{    public: // Data and methods accessible from anywhere in the program.        // input is -45 by default if no argument is given.       	Example(int number_in = -45); // Constructor.        virtual ~Example();           // Destructor.        int  getNumber(); // Notice the semicolon!        void setNumber(int n);    protected: // Same as protected, but also accessible from child (derived) classes.        virtual int getChildNumber(); // Virtual Method. '=0' for pure virtual.    private: // DEFAULT, accessible only from a particular instance of this class.        int number; // Private variable.};class subClass : public Example // inheritance.{  ... // Constructor and Destructor not shown.  virtual int getChildNumber();  private: int childNumber;}\end{verbatim}\newpage\subsection{Example Implementation File (.cpp)}\begin{verbatim}/* Filename: Example.cpp */#include "Example.h"Example::Example(int n) // Constructor.{  number = number_in;}Example::~Example() // Destructor.{  // Free / Delete any memory here.}int Example::getNumber() // Public Method.{  return getChildNumber() + number; // number = this -> number.}void Example::setNumber(int n){  number = n;}int Example::getChildNumber(){  return 0;}int subClass::getChildNumber(){  return childNumber;}\end{verbatim}\newpage\subsection{Constructor}Constructors specify what the initial settings for all of a classes data fields will be. Constructors may take arguments just like functions. Constructors may be implemented in the header file or an associatted implementation file. Constructors are called automatically when an object is first instantiated.\begin{verbatim}Example(int n); // Declaration in Header, implementation in .cpp file.Example(int n){number = n;}; // Implementation in header.\end{verbatim}\subsection{Destructor}The destructors are called when a stack allocated class goes out of scope or when a delete or free operation is performed.\begin{verbatim}virtual ~Example(); // Destructors are always virtual and have a tilde.\end{verbatim}For more about the memory management and how it relates to constructors and destructors, please see Section \ref{MemManage}.\section{Memory Management} \label{MemManage}Like C and unlike Java and many newer languages, C++ requires the programmer to partake in manual memory management. This means that the programmer is responsible for freeing memory resources once they are finished. I will discuss 3 different pairs of memory allocation and deallocation procedures in this section. Programmers can also use some features of C++ such as stack based memory allocation, smart pointers, and passing by pointer/reference to manage memory implicitly, therebye handing off the job of freeing themselves of the responsibility of explicitly calling free or delete functions.\subsection{Malloc / Free}Mallocs and frees have been inherited into the C++ language from good old fashion C.\begin{verbatim}int * array = malloc(1000*sizeof(int));...free(array);\end{verbatim}They are used to allocated explicit regions of memory and free them. All memory allocated in this manner will be stored in the heap, so data that has been malloced will be safe as long until free is called. This makes it useful for allocating data that needs to survive outside of the function or class that has allocated it. I would reccomend only using malloc and free for traditional structures such as arrays of data or primitive structures, but to use new and delete when allocating and deallocating classes.\subsection{new / delete}The new and delete operators work like mallocs and frees, but are more user friendly for allocating space for instances of a given class.\begin{verbatim}Example * ex = new Example(5);...delete ex;\end{verbatim}\subsection{Stack Based (Static) Allocation}Entire classes can be allocated on the stack, just like primitives such as ints, chars, and floats! As long as you are careful to not pass classes that are gigantic around by value, allocating on the stack will make your life easier. Stack based allocation allows you to not need to worry about explicitly freeing the memory and the allocation itself should be faster than dynamic memory allocation.\begin{verbatim}void foo(){Example ex; // instantiates the default constructor with the default value (-45 in this case).//Example ex = Example(5);...// deconstructor is called on 'ex' and 'ex' memory is deallocated.}\end{verbatim}Please note that classes themselves can have statically allocated members, provided there is not an infinite descent loop.\begin{verbatim}class smallstruct{  int val;  float val2;}class largestruct{  smallstruct ss1; // Static allocation.  int val;  smallstruct ss2; // Static allocation.}int main(){  largestruct struc; // Static allocation.  ... // All memory survives until 'struc' is out of scope.}\end{verbatim}\newpage\section{Inheritance}Inheritance can be used to create derived classes that each share some core functionality with the base class, but provide some unique functionality that reflects there own individuality.\\The syntax for denoting that a class inherits a base class is as follows as in the example code:\begin{verbatim}class subClass : public Example // inheritance.\end{verbatim}An example of when inheritance is useful is when writing a raytracer for different types of geometry, which each have their onw ray intersection specification.\subsection{Base Classes / Parent Classes}Base classes are the general parent class that provide core functionality that may be useful to a number of children with more specific interests.\subsection{Derived / Child Classes}Child classes, also known as derived classes, inherit all of the general functionality from a parent, but then extend the core functionality with custom methods that are more specific to the child.\subsection{Virtual Methods}The C++ \texttt{virtual} keyword may be used to label functions as virtual. Virtual methods are those in a parent that provide an implementation, but which may be overridden by a custom implementation in individual child classes.\subsection{Pure Virtual Methods}Pure virtual methods are those that are virtual, but that do not provide an implementation in the base class. These are differentiated from linking errors and missing implementations that are mistakes of the programmer by writing '=0' after the declaration in the header file.\begin{verbatim}virtual int foo() = 0; // '=0' makes it pure, instead of a compile error.\end{verbatim}Classes with pure virtual functions may not be instantiated, instead the programmer would instantiate child classes that provide implementations for the missing methods. Like normal virtual methods, a base class may make calls to pure virtual methods and the implementation will be filled in by whichever child class a programmer has instantiated. This makes it easy to deal with algorithms that require a large number of particular cases of a general problem, such as the ray geometry intersection test used in Computer Graphics Applications.\subsection{Overriding}A method in a child class is said to \textit{override} a method in a base class if it has the same name as a virtual method in the base class. The child class's implementation of the method will be used in liu of the parent method's implementation. In the example in Section \ref{Example1}, the \texttt{subClass} class overrides the \texttt{getChildNumber} method.If the \texttt{subClass} class wanted to make a call to the parent's \texttt{getChildNumber} method, then it would do so as follows:\begin{verbatim}int val = Example::getChildNumber(); // calls base class' function\end{verbatim}\section{Data passing by value, pointer, and reference}Passing by value makes a stack allocated copy. Passing by pointer or reference passes the original memory location.\begin{verbatim}// -- Function Declaration and Implementation.int add1(int n)    // Value.{  n++;  return n;}int add2(int * n); // Pointer.{  (*n)++;  return *n;}int add3(int & n) // Reference.{  n++;  return n;}// -- Function Calling.int n = 0;int q;q = foo1( n);// n --> n.     q = n + 1.q = foo2(&n);// n --> n + 1. q = n + 1.q = foo3( n);// n --> n + 1. q = n + 1.\end{verbatim}\newpage\section{Compilation Quirks and Debugging Hints}Always, always, always, write return statements for functions that have a return type. The compiler will not complain if you forget a return statement and will return whatever junk data was in the return register. This may cause your program to have a mysterious segfault between function calls.\\The compiler will not fully build portions of your code untill there is an execution path from the main function that could possibly call that portion of code. Therefore if you want to see if your code is compiling correctly, then you should integrate it into an actual program, such as a testing harnass.\section{Name Spaces}To prevent naming collisions, C++ organizes names into different namespaces. For instance we could define two classes called example, but put them into different namespaces and they would not interfere with each other.\\The namespace for most of the built in classes, such as the data structures is \texttt{std}.\\To define a namespace for a block of code, for instance with a class declaration, enclose the code with a name space block as follows:\begin{verbatim}namespace exampleNameSpace{  class Example  {    ...  }}\end{verbatim}To reference the example class you can write one of the following:\begin{verbatim}int main(){  exampleNameSpace::Example ex;  ...}\end{verbatim}OR\begin{verbatim}using namespace exampleNameSpace; // This could be seen as name pollution.int main(){  Example ex;  ...}\end{verbatim}If there are name collisions, the compiler will probably yell at you.\section{Data Structures and Operators}\subsection{Standard Data Structures}C++ has a standard template library that includes many useful data structures.\href{http://www.cplusplus.com/reference/stl/}{Reference: http://www.cplusplus.com/reference/stl/}\begin{verbatim}#include <vector>#include <set>#include <map>#include <list>std::vector<int> v;   // Unbounded Array.std::set<int> s;      // Binary Search Tree or Set.std::map<int, int> m; // Associative Array.std::list<int> l;     // Linked List.\end{verbatim}\subsection{Operators}Operators can be defined in at least 3 different ways. One way is to make a local comparator using a struct. The second way is to define a global comparision function for two object of the same type inside of the std namespace. The third way is to define the standard operators from within a class.Please see the following code for an example of an Edge class that overrides the standard operators inside of the class and defines a global hash value in the std namespace for Edge objects.\href{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs/blob/master/Mazes/include/Edge.h}{Here is an example of a class that defines both comparators and hash value in the standard namespace.} \url{https://github.com/Bryce-Summers/Randomized_Acyclic_Connected_Sub_Graphs/blob/master/Mazes/include/Edge.h} I am mainly discussing operators to inform you of the basic approaches that C++ programmers should use to define operators for use with data structures, but I cannot gurantee that this section will completely enlighten you to the nitty gritty details of how to do so in any case.\subsubsection{Comparators}Here is how to create a custom comparator for use with a map or set.\begin{verbatim}// Used to impose an ordering for the tuples in the bst.struct ExampleCompare{    // Returns true if e1 < e2.    bool operator()(const Example * e1, const Example * e2) const    {      return e1.getNumber < e2.getNumber();    }};\end{verbatim}We only need to specify a less than operator for sets, because C++ can derive all other comparison values from it like as follows:\begin{verbatim}Example * a;Example * b;a = b --> !((a < b) || (b < a))a > b --> (b < a)\end{verbatim}\subsubsection{HashValues}Here is how to specify a global hash value for a given type. You can do this for pointer types, reference types, etc.\begin{verbatim}namespace std{  template <>  struct hash<Example *>  {    size_t operator()(const Example * e) const    {      // Return hash value.     ...    }}\end{verbatim}\subsubsection{$<<$ operator} \label{stream_operator}.The $<<$ operator is used as the 'To String' operator and is used with std::cout. We can define this operator as a convenient way of making it play nicely with the text printing pipeline. The $<<$ operator is automatically defined for all standard primitive types. You can likewise define this operator for your own types.\\Please see section \ref{printing} for an example of printing using the $<<$ streaming operator.\newpage\subsection{Iterators}Iterators can be used to iterate over a data structure and for various operations therein such as element deletion.Assume we have an iterable C++ collection such as a std::vector or any other standard C++ data structure. Let us call it $C$.C.begin() will return an iterator to the first element in the structur, and is in this sense inclusive. C.end() returns a vector to the end of the data structure, which is slightly past the last element. In this sense end() is exclusive.We can move the iterator to the next or in some cases the previous element through the incrementation operator \texttt{++}We can reach the elements pointed by an iterator by dereferencing the iterator.\\Here is a complete example of iterating over a std::vector of a custom type Edge.\begin{verbatim}std::vector<Edge> edge_vector = edges->edges;// iter is of type std::vector<Edge>::iterator// 'auto' automatically infers the type.for(auto iter = edge_vector.begin(); iter != edge_vector.end(); ++iter){  Edge edge = *iter;  // do something for every edge.}\end{verbatim}You could also iterate over the edge vector as follows:\begin{verbatim}for ( auto &edge : edge_vector) {  std::cout << edge << std::endl;}\end{verbatim}\newpage\section{Useful Stuff}\subsection{Math}Math.h can be imported to provide many standard mathematics functions that most programmers would expect to see in any standardized language.Here is an example of using the math package to compute a cosine operation.\begin{verbatim}#include <math.h>...double input = 0.0;double output = cos(input);// output is around 1.0;\end{verbatim}For more information about all of the mathematics functions availible, please see: \\\href{http://www.cplusplus.com/reference/cmath/}{http://www.cplusplus.com/reference/cmath/}\subsection{IO and Printing.} \label{printing}Use the iostream package for input and output operations, such as printing using the $<<$ operator. For more on the $<<$ operator, please refer to section \ref{stream_operator}.\begin{verbatim}#include <iostream> int main(){  int variable = 0;  std::cout << "My Variable's value is " << variable << " right now." << std::endl;}\end{verbatim}Here is an example of using the traditional printf function to print a variable.\begin{verbatim}#include <stdio.h>int main(){   int variable = 1;   printf ("My integer is \%d right now.\n", variable);}\end{verbatim}Please note than in each of these examples, the variable printing terminates with a new line character. If you do not print a new line character, then the text is not guranteed to be flushed to the console or other location that it is being sent to.\\For more information on printf, please see:\href{http://www.cplusplus.com/reference/cstdio/printf/}{http://www.cplusplus.com/reference/cstdio/printf/}\\Please see the following website for an example of forming C++ strings and concatenating them:\href{http://www.cplusplus.com/reference/string/string/operator+/}{http://www.cplusplus.com/reference/string/string/operator+/}\subsection{Simple Custom Runtime Errors}If you just want to terminate the program when it enters a certain state with a descriptive termination message, then you could do the following:\begin{verbatim}#include <stdexcept>void myError(){  throw std::runtime_error("ASSERTION FAILED");}\end{verbatim}\subsection{Templates (And Generics)}Templates are used to define types that may be specified in terms of other types. Say you wanted to write an array, you could use templates to make it so one array implementation serves as a template for arrays of shoes, arrays of socks, or any other type of array. The logic of the array does not change, but arbitrary types may be defined for different arrays.\subsubsection{Using Templates}To use templated objects, put the desired element type in $<>$ brackets.Here is how to statically allocate a vector of vectors of integers:\begin{verbatim}std::vector<std::vector<int> > list;}\end{verbatim}Please note that there must be a space between the brackets, or else C++ assumes you mean the $>>$ operator instead of enclosing a parameterization.\subsubsection{Writing you own templates}Template specifications must be implemented inside of the header file if your want them to be portable.Here is an example of a simple data structure class that allows for generic types (that satisfy standard comparison operators).\\\href{https://github.com/Bryce-Summers/CppCode/blob/master/CppCodeBase/include/LeftistHeap.h}{https://github.com/Bryce-Summers/CppCode/blob/master/CppCodeBase/include/LeftistHeap.h}\section{NULL pointers}NULL is a macro for a memory address representing the address of pointers that have no determined location. You may need do some importing before NULL is defined on your system.\section{Pairs}Here is a great example of constructing and reading pairs:\\\href{http://www.cplusplus.com/reference/utility/pair/pair/}{http://www.cplusplus.com/reference/utility/pair/pair/}\\The comparison value for pairs is determined by the comparison value of its two genaric element types.\end{document}
